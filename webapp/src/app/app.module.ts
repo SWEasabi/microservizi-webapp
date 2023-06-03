@@ -14,6 +14,8 @@ const routes: Routes = [
     children: [
       { path: "lamps/all", loadComponent: () => import("./feature/lamps-list/lamps-list.component").then (c => c.LampsListComponent) },
       { path: "lamps/new", loadComponent: () => import("./feature/lamp/lamp.component").then (c => c.LampComponent) },
+      { path: "sensors/all", loadComponent: () => import("./feature/sensors-list/sensors-list.component").then (c => c.SensorsListComponent) },
+      { path: "sensors/new", loadComponent: () => import("./feature/sensor/sensor.component").then (c => c.SensorComponent) },
       { path: "**", redirectTo: "lamps/all", pathMatch: "full" }
     ]
   },
@@ -23,7 +25,7 @@ const routes: Routes = [
 
 @NgModule ({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

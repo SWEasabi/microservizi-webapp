@@ -1,0 +1,43 @@
+<main class="container">
+  <form class="mt-5 mx-auto" [formGroup]="formData" (ngSubmit)="addSensor ()" style="max-width: 350px">
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.alias.valid && formData.controls.alias.dirty" id="floatingInputGroup2" placeholder="Alias" required formControlName="alias">
+        <label for="floatingInputGroup2">Alias</label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.alias.valid && formData.controls.alias.dirty">
+        <ng-container *ngIf="formData.controls.alias.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty" id="floatingInputGroup2" placeholder="sensorRange" required formControlName="sensorRange">
+        <label for="floatingInputGroup2">Posizione geografica sensore 
+        </label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty">
+        <ng-container *ngIf="formData.controls.sensorRange.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty" id="floatingInputGroup2" placeholder="sensorRange" required formControlName="sensorRange">
+        <label for="floatingInputGroup2">Raggio d azione sensore  
+        </label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty">
+        <ng-container *ngIf="formData.controls.sensorRange.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+    <!--  submit button -->
+    <div class="d-grid gap-2 mx-auto mt-3">
+      <button class="btn btn-primary" type="submit" [disabled]="!formData.valid">Conferma</button>
+    </div>
+  </form>
+</main>
