@@ -1,11 +1,12 @@
 import { HttpStatusCode } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, delay, map, Observable, of, switchMap, tap } from "rxjs";
-import { LampStatus } from "../model";
+import { LampStatus , SensorStatus } from "../model";
 import { ApiService } from "./api.service";
 
 interface Store {
   lamps: (LampStatus)[],
+  sensors: (SensorStatus)[]
   loading: boolean,
   firstLoad: boolean,
   error: string
@@ -13,6 +14,7 @@ interface Store {
 
 const initialState: Store = {
   lamps: [],
+  sensors: [],
   loading: false,
   firstLoad: true,
   error: null
@@ -28,6 +30,7 @@ export class AppService {
   $store = new BehaviorSubject<Store> (initialState);
   
   readonly lamps$ = this.$store.pipe (map (state => state.lamps));
+  readonly sensors$ = this.$store.pipe (map (state => state.sensors));
   readonly error$ = this.$store.pipe (map (state => state.error));
   readonly loading$ = this.$store.pipe (map (state => state.loading), delay (0));
   readonly firstLoad$ = this.$store.pipe (map (state => state.firstLoad));
@@ -52,6 +55,29 @@ export class AppService {
       }
     });
   }
+
+  public loadDataSensors () {
+    this.startLoading ();
+    this.api.getAllSensors$ ()
+    .subscribe ({
+      next: (sensors) => {
+        this.$store.next ({
+          ...this.$store.value,
+          sensors,
+          firstLoad: false
+        });
+      },
+      error: (error) => {
+        this.manageError (error);
+        this.stopLoading ();
+      },
+      complete: () => {
+        this.stopLoading ();
+      }
+    });
+  }
+
+
   
   private startLoading () {
     this.$store.next ({
@@ -81,6 +107,14 @@ export class AppService {
       next: () => this.loadData ()
     });
   }
+
+  public toggleSensor (sensor: SensorStatus) {
+    this.setLampPending (sensor, true);
+    this.api.toggleLamp$ (sensor.id, sensor.status === "On" ? "Off" : "On")
+    .subscribe ({
+      next: () => this.loadData ()
+    });
+  }
   
   private manageError (error: any) {
     if (error.status === HttpStatusCode.NotFound) {
@@ -101,6 +135,17 @@ export class AppService {
     .pipe (
       tap (() => this.startLoading ()),
       switchMap (() => this.api.addLamp$ (alias)),
+      map (() => true),
+      catchError (() => of (false)),
+      tap (() => this.loadData ())
+    );
+  }
+
+  public addSensor$ (alias: string): Observable<boolean> {
+    return of (true)
+    .pipe (
+      tap (() => this.startLoading ()),
+      switchMap (() => this.api.addSensor$ (alias)),
       map (() => true),
       catchError (() => of (false)),
       tap (() => this.loadData ())
