@@ -13,24 +13,24 @@
     </div>
     <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
       <div class="form-floating is-invalid">
-        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty" id="floatingInputGroup2" placeholder="sensorRange" required formControlName="sensorRange">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.geoPos.valid && formData.controls.geoPos.dirty" id="floatingInputGroup2" placeholder="geoPos" required formControlName="geoPos">
         <label for="floatingInputGroup2">Posizione geografica sensore 
         </label>
       </div>
-      <div class="invalid-feedback" *ngIf="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty">
-        <ng-container *ngIf="formData.controls.sensorRange.errors?.['required']">
+      <div class="invalid-feedback" *ngIf="!formData.controls.geoPos.valid && formData.controls.geoPos.dirty">
+        <ng-container *ngIf="formData.controls.geoPos.errors?.['required']">
           Il campo è obbligatorio
         </ng-container>
       </div>
     </div>
     <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
       <div class="form-floating is-invalid">
-        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty" id="floatingInputGroup2" placeholder="sensorRange" required formControlName="sensorRange">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.actionRange.valid && formData.controls.actionRange.dirty" id="floatingInputGroup2" placeholder="actionRange" required formControlName="actionRange">
         <label for="floatingInputGroup2">Raggio d azione sensore  
         </label>
       </div>
-      <div class="invalid-feedback" *ngIf="!formData.controls.sensorRange.valid && formData.controls.sensorRange.dirty">
-        <ng-container *ngIf="formData.controls.sensorRange.errors?.['required']">
+      <div class="invalid-feedback" *ngIf="!formData.controls.actionRange.valid && formData.controls.actionRange.dirty">
+        <ng-container *ngIf="formData.controls.actionRange.errors?.['required']">
           Il campo è obbligatorio
         </ng-container>
       </div>
