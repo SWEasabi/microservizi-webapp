@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
 import { last } from "rxjs";
-import { LampStatus, SensorStatus } from "../../model";
+import { SensorStatus } from "../../model";
 
 @Component({
   selector: 'app-sensor-button',
@@ -12,6 +12,7 @@ import { LampStatus, SensorStatus } from "../../model";
   standalone: true
 })
 export class SensorButtonComponent {
+[x: string]: any;
   @Input() data: SensorStatus;
 
   @Output() toggleSensor = new EventEmitter<void>();

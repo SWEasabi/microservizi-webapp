@@ -1,6 +1,6 @@
 import cors from "cors";
 import express, { Express, Request, Response } from "express";
-import { LampStatus, SensorStatus } from "../src/app/model";
+import { AreaStatus, LampStatus, SensorStatus } from "../src/app/model";
 
 const app: Express = express();
 const port = 3000;
@@ -23,10 +23,20 @@ let store: LampStatus[] = [
 
 // Stato dei sensori
 let storeSensor: SensorStatus[] = [
-  { id: getSequence(), status: "On", alias: "Sensor 1" },
-  { id: getSequence(), status: "Off", alias: "Sensor 2" },
-  { id: getSequence(), status: "On", alias: "Sensor 3" },
-  { id: getSequence(), status: "Off", alias: "Sensor 4" }
+  { id: getSequence(), status: "Off", alias: "Sensor 1", geoPos: "test", actionRange: "test" },
+  { id: getSequence(), status: "Off", alias: "Sensor 2", geoPos: "test", actionRange: "test" },
+  { id: getSequence(), status: "Off", alias: "Sensor 3", geoPos: "test", actionRange: "test" },
+  { id: getSequence(), status: "Off", alias: "Sensor 4", geoPos: "test", actionRange: "test" },
+  { id: getSequence(), status: "Off", alias: "Sensor 5", geoPos: "test", actionRange: "test" }
+];
+
+// Stato delle Aree
+let storeArea: AreaStatus[] = [
+  { id: getSequence(), status: "Off", alias: "Area 1"},
+  { id: getSequence(), status: "Off", alias: "Area 2"},
+  { id: getSequence(), status: "Off", alias: "Area 3"},
+  { id: getSequence(), status: "Off", alias: "Area 4"},
+  { id: getSequence(), status: "Off", alias: "Area 5"}
 ];
 
 // Endpoint per ottenere lo stato delle lampadine
@@ -39,6 +49,13 @@ app.get("/lamps", (req: Request, res: Response) => {
 app.get("/sensors", (req: Request, res: Response) => {
   setTimeout(() => {
     res.json(storeSensor);
+  }, Math.random() * 100);
+});
+// Endpoint per ottenere lo stato delle aree
+app.get("/areas", (req: Request, res: Response) => {
+  console.log("GET /areas");
+  setTimeout(() => {
+    res.json(storeArea);
   }, Math.random() * 100);
 });
 
@@ -102,6 +119,7 @@ app.post("/lamps", (req: Request<any, any, { alias: string }>, res: Response) =>
     alias
   };
   store.push(newLamp);
+  console.log("POST /lamps", newLamp);
   // delay di 1 secondo
   setTimeout(() => {
     res.json(newLamp);
@@ -110,8 +128,10 @@ app.post("/lamps", (req: Request<any, any, { alias: string }>, res: Response) =>
 });
 
 // Endpoint per aggiungere un sensore
-app.post("/sensors", (req: Request<any, any, { alias: string }>, res: Response) => {
+app.post("/sensors", (req: Request<any, any, { alias: string, geoPos: string, actionRange: string }>, res: Response) => {
   const alias = req.body.alias;
+  const geoPos = req.body.geoPos;
+  const actionRange = req.body.actionRange;
 
   if (!alias) {
     res.status(400)
@@ -122,12 +142,38 @@ app.post("/sensors", (req: Request<any, any, { alias: string }>, res: Response) 
   const newSensor: SensorStatus = {
     id: getSequence(),
     status: "Off",
-    alias
+    alias,
+    geoPos,
+    actionRange,
   };
   storeSensor.push(newSensor);
   // delay di 1 secondo
   setTimeout(() => {
     res.json(newSensor);
+  }, Math.random() * 100);
+
+});
+
+// Endpoint per aggiungere una Area
+app.post("/areas", (req: Request<any, any, { alias: string }>, res: Response) => {
+  const alias = req.body.alias;
+ console.log("POST /areas");
+  if (!alias) {
+    res.status(400)
+      .json({ error: "Alias is required" });
+    return;
+  }
+
+  const newArea: AreaStatus = {
+    id: getSequence(),
+    status: "Off",
+    alias
+  };
+  storeArea.push(newArea);
+  console.log("POST /areas");
+  // delay di 1 secondo
+  setTimeout(() => {
+    res.json(newArea);
   }, Math.random() * 100);
 
 });

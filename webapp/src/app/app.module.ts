@@ -16,6 +16,8 @@ const routes: Routes = [
       { path: "lamps/new", loadComponent: () => import("./feature/lamp/lamp.component").then (c => c.LampComponent) },
       { path: "sensors/all", loadComponent: () => import("./feature/sensors-list/sensors-list.component").then (c => c.SensorsListComponent) },
       { path: "sensors/new", loadComponent: () => import("./feature/sensor/sensor.component").then (c => c.SensorComponent) },
+      { path: "areas/all", loadComponent: () => import("./feature/areas-list/areas-list.component").then (c => c.AreasListComponent) },
+      { path: "areas/new", loadComponent: () => import("./feature/area/area.component").then (c => c.AreaComponent) },
       { path: "**", redirectTo: "lamps/all", pathMatch: "full" }
     ]
   },

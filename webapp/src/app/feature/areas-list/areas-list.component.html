@@ -1,0 +1,8 @@
+<div class="mt-5 d-flex flex-wrap justify-content-center gap-2">
+    <app-area-button
+        [data]="area"
+       
+        *ngFor="let area of areas$ | async; trackBy: trackByAreaId"
+    ></app-area-button>
+  </div>
+  

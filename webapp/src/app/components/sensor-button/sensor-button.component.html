@@ -4,14 +4,14 @@
     class="d-flex flex-column p-3 align-items-stretch"
     (click)="toggleSensor.next ()">
   <span class="button-header mb-3 pb-1">
-    {{ data.alias }}
+    Nome : {{ data.alias }} <br> Area geografica : {{data.geoPos}} <br> Portata: {{data.actionRange}}
   </span>
   <ng-container *ngIf="data">
-    <ng-container [ngSwitch]="data.status">
-      <img *ngSwitchCase="'On'" src="../../assets/images/lamp2.png" alt="Lamp On">
-      <img *ngSwitchCase="'Off'" src="../../assets/images/lamp.png" alt="Lamp Off">
-      <img *ngSwitchDefault src="../../assets/images/loading.png" alt="Lamp Off">
-    </ng-container>
-    <h2>{{data.status}}</h2>
+    <ng-container [ngSwitch]="data.alias">
+      <div class="image-container">
+        <img src="../../assets/images/sensorIcon.svg" alt="Sensor">
+      </div>
+    </ng-container>    
+    <h2>{{data.alias}}</h2>
   </ng-container>
 </button>
