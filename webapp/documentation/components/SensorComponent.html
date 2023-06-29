@@ -1,0 +1,667 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>http documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">http documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SensorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/feature/sensor/sensor.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for Sensor.
+This component contains a form for adding a new sensor.
+It interacts with the AppService to add new sensors and navigate back to the root route upon successful addition.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-sensor</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                            <code>RouterModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./sensor.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./sensor.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appService" >appService</a>
+                            </li>
+                            <li>
+                                <a href="#error$" >error$</a>
+                            </li>
+                            <li>
+                                <a href="#formBuilder" >formBuilder</a>
+                            </li>
+                            <li>
+                                <a href="#formData" >formData</a>
+                            </li>
+                            <li>
+                                <a href="#router" >router</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addSensor" >addSensor</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addSensor"></a>
+                    <span class="name">
+                        <span ><b>addSensor</b></span>
+                        <a href="#addSensor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addSensor()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/feature/sensor/sensor.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Function to add a new sensor.
+It retrieves the alias, geoPos, and actionRange values from the form and calls the addSensor$ method of the AppService.
+Upon successful addition, it navigates back to the root route.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appService"></a>
+                    <span class="name">
+                        <span ><b>appService</b></span>
+                        <a href="#appService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AppService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/feature/sensor/sensor.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Instance of the AppService.
+This is used to interact with the backend.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error$"></a>
+                    <span class="name">
+                        <span ><b>error$</b></span>
+                        <a href="#error$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.appService.error$</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/feature/sensor/sensor.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An observable of the error status.
+This is used to manage the error state of the component.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formBuilder"></a>
+                    <span class="name">
+                        <span ><b>formBuilder</b></span>
+                        <a href="#formBuilder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/feature/sensor/sensor.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Instance of the FormBuilder.
+This is used to create a reactive form for adding new sensors.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formData"></a>
+                    <span class="name">
+                        <span ><b>formData</b></span>
+                        <a href="#formData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    alias: this.formBuilder.control(&quot;&quot;, [Validators.required]),
+    geoPos: this.formBuilder.control(&quot;&quot;, [Validators.required]),
+    actionRange: this.formBuilder.control(&quot;&quot;, [Validators.required])
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/feature/sensor/sensor.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Instance of the FormGroup.
+This is used to create and manage the form controls.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Router)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/feature/sensor/sensor.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Instance of the Router.
+This is used to navigate among routes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
+// Necessary imports from Angular core
+import { Component, inject } from &quot;@angular/core&quot;;
+// Imports for the form controls
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from &quot;@angular/forms&quot;;
+// Import for the Router
+import { Router, RouterModule } from &quot;@angular/router&quot;;
+// Import for the AppService
+import { AppService } from &quot;../../services/app.service&quot;;
+
+/**
+ * Component for Sensor.
+ * This component contains a form for adding a new sensor.
+ * It interacts with the AppService to add new sensors and navigate back to the root route upon successful addition.
+ */
+@Component({
+  selector: &quot;app-sensor&quot;,
+  templateUrl: &quot;./sensor.component.html&quot;,
+  styleUrls: [&quot;./sensor.component.css&quot;],
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
+})
+export class SensorComponent {
+  /**
+   * Instance of the AppService.
+   * This is used to interact with the backend.
+   */
+  appService &#x3D; inject(AppService);
+
+  /**
+   * Instance of the Router.
+   * This is used to navigate among routes.
+   */
+  router &#x3D; inject(Router);
+
+  /**
+   * Instance of the FormBuilder.
+   * This is used to create a reactive form for adding new sensors.
+   */
+  formBuilder &#x3D; inject(FormBuilder);
+
+  /**
+   * Instance of the FormGroup.
+   * This is used to create and manage the form controls.
+   */
+  formData &#x3D; this.formBuilder.group({
+    alias: this.formBuilder.control(&quot;&quot;, [Validators.required]),
+    geoPos: this.formBuilder.control(&quot;&quot;, [Validators.required]),
+    actionRange: this.formBuilder.control(&quot;&quot;, [Validators.required])
+  });
+
+  /**
+   * An observable of the error status.
+   * This is used to manage the error state of the component.
+   */
+  error$ &#x3D; this.appService.error$;
+
+  /**
+   * Function to add a new sensor.
+   * It retrieves the alias, geoPos, and actionRange values from the form and calls the addSensor$ method of the AppService.
+   * Upon successful addition, it navigates back to the root route.
+   */
+  addSensor() {
+    const alias &#x3D; this.formData.get(&quot;alias&quot;).value;
+    const geoPos &#x3D; this.formData.get(&quot;geoPos&quot;).value;
+    const actionRange &#x3D; this.formData.get(&quot;actionRange&quot;).value;
+
+    this.appService.addSensor$(alias, geoPos, actionRange)
+      .subscribe((completed) &#x3D;&gt; {
+        if (completed) {
+          this.router.navigate([&quot;/&quot;]);
+        }
+      });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;main class&#x3D;&quot;container&quot;&gt;
+  &lt;form class&#x3D;&quot;mt-5 mx-auto&quot; [formGroup]&#x3D;&quot;formData&quot; (ngSubmit)&#x3D;&quot;addSensor ()&quot; style&#x3D;&quot;max-width: 350px&quot;&gt;
+    &lt;div class&#x3D;&quot;input-group has-validation mx-auto&quot; style&#x3D;&quot;margin-bottom: 0.7em;&quot;&gt;
+      &lt;div class&#x3D;&quot;form-floating is-invalid&quot;&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [class.is-invalid]&#x3D;&quot;!formData.controls.alias.valid &amp;&amp; formData.controls.alias.dirty&quot; id&#x3D;&quot;floatingInputGroup2&quot; placeholder&#x3D;&quot;Alias&quot; required formControlName&#x3D;&quot;alias&quot;&gt;
+        &lt;label for&#x3D;&quot;floatingInputGroup2&quot;&gt;Alias&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;invalid-feedback&quot; *ngIf&#x3D;&quot;!formData.controls.alias.valid &amp;&amp; formData.controls.alias.dirty&quot;&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;formData.controls.alias.errors?.[&#x27;required&#x27;]&quot;&gt;
+          Il campo è obbligatorio
+        &lt;/ng-container&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;input-group has-validation mx-auto&quot; style&#x3D;&quot;margin-bottom: 0.7em;&quot;&gt;
+      &lt;div class&#x3D;&quot;form-floating is-invalid&quot;&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [class.is-invalid]&#x3D;&quot;!formData.controls.geoPos.valid &amp;&amp; formData.controls.geoPos.dirty&quot; id&#x3D;&quot;floatingInputGroup2&quot; placeholder&#x3D;&quot;geoPos&quot; required formControlName&#x3D;&quot;geoPos&quot;&gt;
+        &lt;label for&#x3D;&quot;floatingInputGroup2&quot;&gt;Posizione geografica sensore 
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;invalid-feedback&quot; *ngIf&#x3D;&quot;!formData.controls.geoPos.valid &amp;&amp; formData.controls.geoPos.dirty&quot;&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;formData.controls.geoPos.errors?.[&#x27;required&#x27;]&quot;&gt;
+          Il campo è obbligatorio
+        &lt;/ng-container&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;input-group has-validation mx-auto&quot; style&#x3D;&quot;margin-bottom: 0.7em;&quot;&gt;
+      &lt;div class&#x3D;&quot;form-floating is-invalid&quot;&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [class.is-invalid]&#x3D;&quot;!formData.controls.actionRange.valid &amp;&amp; formData.controls.actionRange.dirty&quot; id&#x3D;&quot;floatingInputGroup2&quot; placeholder&#x3D;&quot;actionRange&quot; required formControlName&#x3D;&quot;actionRange&quot;&gt;
+        &lt;label for&#x3D;&quot;floatingInputGroup2&quot;&gt;Raggio d azione sensore  
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;invalid-feedback&quot; *ngIf&#x3D;&quot;!formData.controls.actionRange.valid &amp;&amp; formData.controls.actionRange.dirty&quot;&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;formData.controls.actionRange.errors?.[&#x27;required&#x27;]&quot;&gt;
+          Il campo è obbligatorio
+        &lt;/ng-container&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!--  submit button --&gt;
+    &lt;div class&#x3D;&quot;d-grid gap-2 mx-auto mt-3&quot;&gt;
+      &lt;button class&#x3D;&quot;btn btn-primary&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;!formData.valid&quot;&gt;Conferma&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/main&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./sensor.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><main class="container">  <form class="mt-5 mx-auto" [formGroup]="formData" (ngSubmit)="addSensor ()" style="max-width: 350px">    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">      <div class="form-floating is-invalid">        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.alias.valid && formData.controls.alias.dirty" id="floatingInputGroup2" placeholder="Alias" required formControlName="alias">        <label for="floatingInputGroup2">Alias</label>      </div>      <div class="invalid-feedback" *ngIf="!formData.controls.alias.valid && formData.controls.alias.dirty">        <ng-container *ngIf="formData.controls.alias.errors?.[\'required\']">          Il campo è obbligatorio        </ng-container>      </div>    </div>    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">      <div class="form-floating is-invalid">        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.geoPos.valid && formData.controls.geoPos.dirty" id="floatingInputGroup2" placeholder="geoPos" required formControlName="geoPos">        <label for="floatingInputGroup2">Posizione geografica sensore         </label>      </div>      <div class="invalid-feedback" *ngIf="!formData.controls.geoPos.valid && formData.controls.geoPos.dirty">        <ng-container *ngIf="formData.controls.geoPos.errors?.[\'required\']">          Il campo è obbligatorio        </ng-container>      </div>    </div>    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">      <div class="form-floating is-invalid">        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.actionRange.valid && formData.controls.actionRange.dirty" id="floatingInputGroup2" placeholder="actionRange" required formControlName="actionRange">        <label for="floatingInputGroup2">Raggio d azione sensore          </label>      </div>      <div class="invalid-feedback" *ngIf="!formData.controls.actionRange.valid && formData.controls.actionRange.dirty">        <ng-container *ngIf="formData.controls.actionRange.errors?.[\'required\']">          Il campo è obbligatorio        </ng-container>      </div>    </div>    <!--  submit button -->    <div class="d-grid gap-2 mx-auto mt-3">      <button class="btn btn-primary" type="submit" [disabled]="!formData.valid">Conferma</button>    </div>  </form></main></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AreaButtonComponent', 'selector': 'app-area-button'},{'name': 'AreaComponent', 'selector': 'app-area'},{'name': 'AreasListComponent', 'selector': 'app-areas-list'},{'name': 'AuthenticationComponent', 'selector': 'app-authentication'},{'name': 'LampButtonComponent', 'selector': 'app-lamp-button'},{'name': 'LampComponent', 'selector': 'app-lamp'},{'name': 'LampsListComponent', 'selector': 'app-lamps-list'},{'name': 'PrivateAreaComponent', 'selector': 'app-private-area'},{'name': 'SensorButtonComponent', 'selector': 'app-sensor-button'},{'name': 'SensorComponent', 'selector': 'app-sensor'},{'name': 'SensorsListComponent', 'selector': 'app-sensors-list'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SensorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SensorComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
