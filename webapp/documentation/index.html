@@ -31,20 +31,72 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1>Http</h1>
-<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 15.0.4.</p>
-<h2>Development server</h2>
-<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The application will automatically reload if you change any of the source files.</p>
-<h2>Code scaffolding</h2>
-<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
-<h2>Build</h2>
-<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory.</p>
-<h2>Running unit tests</h2>
-<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
-<h2>Running end-to-end tests</h2>
-<p>Run <code>ng e2e</code> to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.</p>
-<h2>Further help</h2>
-<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.io/cli">Angular CLI Overview and Command Reference</a> page.</p>
+                    <h1>Sweasabi Project - Webapp</h1>
+
+                    <h2>Overview</h2>
+                    <p>This project is a sample Angular application that demonstrates the management of lamps, sensors, and areas. It provides functionality to view the status of these devices, toggle their states, and add new devices. The application utilizes Angular components, services, and API calls to interact with the backend server.</p>
+                    
+                    <h2>Features</h2>
+                    <ul>
+                      <li>View a list of lamps, sensors, and areas.</li>
+                      <li>Toggle the status of lamps and sensors.</li>
+                      <li>Add new lamps, sensors, and areas.</li>
+                      <li>Handle loading and error states during API calls.</li>
+                      <li>Implement authentication and protected routes.</li>
+                    </ul>
+                    
+                    <h2>Installation</h2>
+                    <p>To run this project locally, follow these steps:</p>
+                    <ol>
+                      <li>Clone the repository: <code>git clone &lt;repository-url&gt;</code></li>
+                      <li>Navigate to the project directory: <code>cd &lt;project-directory&gt;</code></li>
+                      <li>Install the dependencies: <code>npm install</code></li>
+                      <li>Start the development server: <code>npm start</code></li>
+                    </ol>
+                    
+                    <h2>Architecture and Design</h2>
+                    <h3>Model</h3>
+                    <p>The project defines three interfaces to represent the status of lamps, sensors, and areas. These interfaces (<code>LampStatus</code>, <code>SensorStatus</code>, <code>AreaStatus</code>) define the structure of the status objects and provide properties to store relevant information such as status, identifier, and alias.</p>
+                    
+                    <h3>API Service</h3>
+                    <p>The <code>ApiService</code> is responsible for making API requests to interact with the backend server. It utilizes the Angular <code>HttpClient</code> to send HTTP requests and receive responses. The service provides methods to retrieve lamp, sensor, and area data, toggle the status of devices, and add new devices.</p>
+                    
+                    <h3>Components</h3>
+                    <ul>
+                      <li><code>LampsListComponent</code>: Displays a list of lamps and allows users to toggle their status.</li>
+                      <li><code>AreasListComponent</code>: Displays a list of areas.</li>
+                      <li><code>SensorsListComponent</code>: Displays a sensors of areas.</li>
+                      <li><code>LampButtonComponent</code>: Represents a lamp item in the list with its status and toggle functionality.</li>
+                      <li><code>AreaButtonComponent</code>: Represents an area item in the list.</li>
+                      <li><code>SensorButtonComponent</code>: Represents an area item in the list.</li>
+                    </ul>
+                    
+                    <h3>Services</h3>
+                    <ul>
+                      <li><code>AppService</code>: Manages the state of the application by storing the status of lamps, sensors, and areas in a store. It communicates with the <code>ApiService</code> to fetch data, update status, and handle loading and error states. The service also provides methods to add new devices.</li>
+                      <li><code>AuthService</code>: Provides authentication functionality to check if a user is logged in.</li>
+                    </ul>
+                    
+                    <h3>Guards</h3>
+                    <ul>
+                      <li><code>AuthGuard</code>: A custom authentication guard that protects routes based on the user's authentication status. If the user is not logged in, it redirects to the login page.</li>
+                    </ul>
+                    
+                    <h2>Usage</h2>
+                    <p>The application provides an intuitive user interface with a list of lamps and areas. Users can toggle the status of lamps and add new devices. Protected routes require authentication to access.</p>
+                    
+                    <h2>Credits</h2>
+                    <p>This project is developed using Angular, Angular CLI, and various Angular libraries. It also utilizes the HTTP client to communicate with the backend server.</p>
+                    
+                    <h2>License</h2>
+                    <p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
+                    
+                    <h2>Contributing</h2>
+                    <p>Contributions are welcome! Feel free to open issues and submit pull requests to contribute to this project.</p>
+                    
+                    <h2>Contact</h2>
+                    <p>For questions or inquiries, please contact <a href="mailto:your-email@example.com">Your Name</a>.</p>
+                    
 
 
 
