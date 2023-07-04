@@ -1,0 +1,45 @@
+on: [push, pull_request]
+
+jobs:
+  upload_html:
+    runs-on: ubuntu-latest
+    name: Build Documents
+    steps:
+      - name: 🚧 Set up Git repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+            
+      - name: 🧬 Generate artifact containing HTML files
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.REPO_NAME }}_html
+          path: "webapp/documentation/"
+          
+  deploy_ghpages:
+    runs-on: ubuntu-latest
+    name: Deploy GitHub Pages
+    needs: [upload_html]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: ⬇ Download artifact ${{ env.REPO_NAME }}_html
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.REPO_NAME }}_html
+          path: ./html
+      
+      - name: 🚧 Setup Github Pages
+        uses: actions/configure-pages@v2
+      
+      - name: 🧬 Generate github-pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./html
+      
+      - name: ⬆ Deploy artifact to GitHub Pages
+        uses: actions/deploy-pages@v1
