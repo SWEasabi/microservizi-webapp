@@ -14,7 +14,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.REPO_NAME }}_html
-          path: "webapp/documentation/"
+          path: "documentation/"
           
   deploy_ghpages:
     runs-on: ubuntu-latest
