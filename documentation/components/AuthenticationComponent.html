@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -77,9 +77,9 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Component for Authentication.
-This component provides a login form.
-It interacts with the AuthService to authenticate a user and navigate to the private area upon successful login.</p>
+        <p>Componente per l&#39;Autenticazione.
+Questo componente fornisce un form di login.
+Interagisce con l&#39;AuthService per autenticare un utente e navigare nell&#39;area privata in caso di login avvenuto con successo.</p>
 
     </p>
 
@@ -246,10 +246,10 @@ It interacts with the AuthService to authenticate a user and navigate to the pri
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Function to login a user.
-It retrieves the form data and calls the login method of the AuthService.
-Upon successful login, it navigates to the private area.
-If login fails, it sets the errorMessage.</p>
+                    <div class="io-description"><p>Funzione per effettuare il login di un utente.
+Recupera i dati dal form e chiama il metodo login dell&#39;AuthService.
+In caso di login avvenuto con successo, viene navigato nell&#39;area privata.
+Se il login fallisce, viene impostato il messaggio di errore.</p>
 </div>
 
                     <div class="io-description">
@@ -288,8 +288,8 @@ If login fails, it sets the errorMessage.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Angular&#39;s lifecycle hook.
-It removes the token from local storage whenever this component is initialized.</p>
+                    <div class="io-description"><p>Hook del ciclo di vita di Angular.
+Rimuove il token dal local storage ogni volta che questo componente viene inizializzato.</p>
 </div>
 
                     <div class="io-description">
@@ -319,7 +319,7 @@ It removes the token from local storage whenever this component is initialized.<
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject (AuthService)</code>
+                        <i>Default value : </i><code>inject(AuthService)</code>
                     </td>
                 </tr>
                     <tr>
@@ -330,8 +330,8 @@ It removes the token from local storage whenever this component is initialized.<
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the AuthService.
-This is used to authenticate a user.</p>
+                    <div class="io-description"><p>Istanza di AuthService.
+Viene utilizzata per autenticare un utente.</p>
 </div>
                 </td>
             </tr>
@@ -363,8 +363,8 @@ This is used to authenticate a user.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>A variable to store error message.
-This is used to display error messages to the user.</p>
+                    <div class="io-description"><p>Una variabile per memorizzare il messaggio di errore.
+Viene utilizzata per mostrare i messaggi di errore all&#39;utente.</p>
 </div>
                 </td>
             </tr>
@@ -384,7 +384,7 @@ This is used to display error messages to the user.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject (FormBuilder)</code>
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
                     </td>
                 </tr>
                     <tr>
@@ -395,8 +395,8 @@ This is used to display error messages to the user.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the FormBuilder.
-This is used to create a reactive form for the login functionality.</p>
+                    <div class="io-description"><p>Istanza del FormBuilder.
+Viene utilizzata per creare un form reattivo per la funzionalità di login.</p>
 </div>
                 </td>
             </tr>
@@ -416,9 +416,9 @@ This is used to create a reactive form for the login functionality.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.formBuilder.group ({
-    username: this.formBuilder.control (&quot;&quot;, [Validators.required]),
-    password: this.formBuilder.control (&quot;&quot;, [Validators.required])
+                        <i>Default value : </i><code>this.formBuilder.group({
+    username: this.formBuilder.control(&quot;&quot;, [Validators.required]),
+    password: this.formBuilder.control(&quot;&quot;, [Validators.required])
   })</code>
                     </td>
                 </tr>
@@ -430,8 +430,8 @@ This is used to create a reactive form for the login functionality.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the FormGroup.
-This is used to create and manage the form controls.</p>
+                    <div class="io-description"><p>Istanza del FormGroup.
+Viene utilizzata per creare e gestire i controlli del form.</p>
 </div>
                 </td>
             </tr>
@@ -451,7 +451,7 @@ This is used to create and manage the form controls.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject (Router)</code>
+                        <i>Default value : </i><code>inject(Router)</code>
                     </td>
                 </tr>
                     <tr>
@@ -462,8 +462,8 @@ This is used to create and manage the form controls.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the Router.
-This is used to navigate among routes.</p>
+                    <div class="io-description"><p>Istanza del Router.
+Viene utilizzata per navigare tra le route.</p>
 </div>
                 </td>
             </tr>
@@ -477,23 +477,23 @@ This is used to navigate among routes.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
-// Necessary for API calls
+// Import necessario per le chiamate API
 import { HttpClientModule } from &quot;@angular/common/http&quot;;
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject, OnInit } from &quot;@angular/core&quot;;
-// Imports for the form controls
+// Import per i controlli del form
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from &quot;@angular/forms&quot;;
-// Import for the Router
+// Import per il Router
 import { Router } from &quot;@angular/router&quot;;
-// Import for the AuthService
+// Import per l&#x27;AuthService
 import { AuthService } from &quot;../../services/auth.service&quot;;
 
 /**
- * Component for Authentication.
- * This component provides a login form.
- * It interacts with the AuthService to authenticate a user and navigate to the private area upon successful login.
+ * Componente per l&#x27;Autenticazione.
+ * Questo componente fornisce un form di login.
+ * Interagisce con l&#x27;AuthService per autenticare un utente e navigare nell&#x27;area privata in caso di login avvenuto con successo.
  */
-@Component ({
+@Component({
   selector: &quot;app-authentication&quot;,
   templateUrl: &quot;./authentication.component.html&quot;,
   styleUrls: [&quot;./authentication.component.css&quot;],
@@ -501,64 +501,64 @@ import { AuthService } from &quot;../../services/auth.service&quot;;
   imports: [HttpClientModule, CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class AuthenticationComponent implements OnInit {
-  
-  /**
-   * Instance of the AuthService.
-   * This is used to authenticate a user.
-   */
-  authService &#x3D; inject (AuthService);
 
   /**
-   * Instance of the Router.
-   * This is used to navigate among routes.
+   * Istanza di AuthService.
+   * Viene utilizzata per autenticare un utente.
    */
-  router &#x3D; inject (Router);
+  authService &#x3D; inject(AuthService);
 
   /**
-   * Instance of the FormBuilder.
-   * This is used to create a reactive form for the login functionality.
+   * Istanza del Router.
+   * Viene utilizzata per navigare tra le route.
    */
-  formBuilder &#x3D; inject (FormBuilder);
+  router &#x3D; inject(Router);
 
   /**
-   * Instance of the FormGroup.
-   * This is used to create and manage the form controls.
+   * Istanza del FormBuilder.
+   * Viene utilizzata per creare un form reattivo per la funzionalità di login.
    */
-  formData &#x3D; this.formBuilder.group ({
-    username: this.formBuilder.control (&quot;&quot;, [Validators.required]),
-    password: this.formBuilder.control (&quot;&quot;, [Validators.required])
+  formBuilder &#x3D; inject(FormBuilder);
+
+  /**
+   * Istanza del FormGroup.
+   * Viene utilizzata per creare e gestire i controlli del form.
+   */
+  formData &#x3D; this.formBuilder.group({
+    username: this.formBuilder.control(&quot;&quot;, [Validators.required]),
+    password: this.formBuilder.control(&quot;&quot;, [Validators.required])
   });
 
   /**
-   * A variable to store error message.
-   * This is used to display error messages to the user.
+   * Una variabile per memorizzare il messaggio di errore.
+   * Viene utilizzata per mostrare i messaggi di errore all&#x27;utente.
    */
   errorMessage: string;
 
   /**
-   * Angular&#x27;s lifecycle hook.
-   * It removes the token from local storage whenever this component is initialized.
+   * Hook del ciclo di vita di Angular.
+   * Rimuove il token dal local storage ogni volta che questo componente viene inizializzato.
    */
-  ngOnInit () {
-    localStorage.removeItem (&quot;token&quot;);
+  ngOnInit() {
+    localStorage.removeItem(&quot;token&quot;);
   }
 
   /**
-   * Function to login a user.
-   * It retrieves the form data and calls the login method of the AuthService.
-   * Upon successful login, it navigates to the private area.
-   * If login fails, it sets the errorMessage.
+   * Funzione per effettuare il login di un utente.
+   * Recupera i dati dal form e chiama il metodo login dell&#x27;AuthService.
+   * In caso di login avvenuto con successo, viene navigato nell&#x27;area privata.
+   * Se il login fallisce, viene impostato il messaggio di errore.
    */
-  login () {
+  login() {
     const credentials &#x3D; this.formData.value;
-    this.authService.login (credentials.username, credentials.password)
-    .subscribe ((logged) &#x3D;&gt; {
-      if (logged) {
-        this.router.navigate ([&quot;/private-area&quot;]);
-      } else {
-        this.errorMessage &#x3D; &quot;Invalid credentials&quot;;
-      }
-    });
+    this.authService.login(credentials.username, credentials.password)
+      .subscribe((logged) &#x3D;&gt; {
+        if (logged) {
+          this.router.navigate([&quot;/private-area&quot;]);
+        } else {
+          this.errorMessage &#x3D; &quot;Credenziali non valide&quot;;
+        }
+      });
   }
 }
 </code></pre>

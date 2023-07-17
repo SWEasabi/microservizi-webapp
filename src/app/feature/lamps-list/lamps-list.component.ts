@@ -1,21 +1,21 @@
-// Angular's common module
+// Modulo comune di Angular
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } from "@angular/core";
-// Import for the LampButtonComponent
+// Import per il componente LampButtonComponent
 import { LampButtonComponent } from "../../components/lamp-button/lamp-button.component";
-// Import for the LampStatus model
+// Import per il modello LampStatus
 import { LampStatus } from "../../model";
-// Import for the AppService
+// Import per l'AppService
 import { AppService } from "../../services/app.service";
 
 /**
- * A list component for Lamps.
- * This component is responsible for managing events and passing data to the presentational component.
- * It interfaces with the AppService to load data and toggle lamp status.
- * This component uses the OnPush change detection strategy.
+ * Un componente di lista per le lampade.
+ * Questo componente è responsabile della gestione degli eventi e del passaggio dei dati al componente presentazionale.
+ * Interagisce con l'AppService per caricare i dati e per cambiare lo stato delle lampade.
+ * Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.
  */
-@Component ({
+@Component({
   selector: "app-lamps-list",
   standalone: true,
   imports: [CommonModule, LampButtonComponent],
@@ -25,43 +25,43 @@ import { AppService } from "../../services/app.service";
 })
 export class LampsListComponent implements OnInit {
   /**
-   * Implementation of the OnInit lifecycle hook
-   * Here, the loadData method of the service is called.
+   * Implementazione del hook del ciclo di vita OnInit.
+   * Qui viene chiamato il metodo loadData del servizio.
    */
-  ngOnInit () {
-    this.service.loadData ();
+  ngOnInit() {
+    this.service.loadData();
   }
-  
-  /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
-   */
-  service = inject (AppService);
 
   /**
-   * An observable of the lamps array.
-   * This is used to keep track of the list of lamps in real time.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
+   */
+  service = inject(AppService);
+
+  /**
+   * Un osservabile dell'array di lampade.
+   * Viene utilizzato per tenere traccia della lista di lampade in tempo reale.
    */
   lamps$ = this.service.lamps$;
 
   /**
-   * An observable of the loading status.
-   * This is used to manage the loading state of the component.
+   * Un osservabile dello stato di caricamento.
+   * Viene utilizzato per gestire lo stato di caricamento del componente.
    */
   loading$ = this.service.loading$;
 
   /**
-   * Function to track lamps by id.
-   * This helps Angular to optimize the rendering of lists.
+   * Funzione per tracciare le lampade in base all'id.
+   * Questo aiuta Angular ad ottimizzare il rendering delle liste.
    */
   trackByLampId: TrackByFunction<LampStatus> = (index: number, lamp: LampStatus) => lamp.id;
-  
+
   /**
-   * Method to toggle the status of a lamp.
-   * This method makes use of the AppService to toggle the lamp.
-   * @param lamp - The LampStatus instance to toggle
+   * Metodo per cambiare lo stato di una lampada.
+   * Questo metodo utilizza l'AppService per cambiare lo stato della lampada.
+   * @param lamp - L'istanza di LampStatus da cambiare
    */
-  toggleLamp (lamp: LampStatus) {
-    this.service.toggleLamp (lamp);
+  toggleLamp(lamp: LampStatus) {
+    this.service.toggleLamp(lamp);
   }
 }

@@ -1,18 +1,18 @@
-// Angular's common module
+// Modulo comune di Angular
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject } from "@angular/core";
-// Imports for the form controls
+// Import per i controlli del form
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-// Import for the Router
+// Import per il Router
 import { Router, RouterModule } from "@angular/router";
-// Import for the AppService
+// Import per l'AppService
 import { AppService } from "../../services/app.service";
 
 /**
- * Component for Area.
- * This component contains a form for adding a new area.
- * It interacts with the AppService to add new areas and navigate back to the root route upon successful addition.
+ * Componente per le Aree.
+ * Questo componente contiene un form per aggiungere una nuova area.
+ * Interagisce con l'AppService per aggiungere nuove aree e tornare alla root route in caso di aggiunta riuscita.
  */
 @Component({
   selector: "app-area",
@@ -23,45 +23,44 @@ import { AppService } from "../../services/app.service";
 })
 export class AreaComponent {
   /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
    */
   appService = inject(AppService);
 
   /**
-   * Instance of the Router.
-   * This is used to navigate among routes.
+   * Istanza del Router.
+   * Viene utilizzata per navigare tra le rotte.
    */
   router = inject(Router);
 
   /**
-   * Instance of the FormBuilder.
-   * This is used to create a reactive form for adding new areas.
+   * Istanza del FormBuilder.
+   * Viene utilizzata per creare un form reattivo per aggiungere nuove aree.
    */
   formBuilder = inject(FormBuilder);
 
   /**
-   * Instance of the FormGroup.
-   * This is used to create and manage the form controls.
+   * Istanza del FormGroup.
+   * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
     alias: this.formBuilder.control("", [Validators.required])
   });
 
   /**
-   * An observable of the error status.
-   * This is used to manage the error state of the component.
+   * Un osservabile dello stato di errore.
+   * Viene utilizzato per gestire lo stato di errore del componente.
    */
   error$ = this.appService.error$;
-  
+
   /**
-   * Function to add a new area.
-   * It retrieves the alias value from the form and calls the addArea$ method of the AppService.
-   * Upon successful addition, it navigates back to the root route.
+   * Funzione per aggiungere una nuova area.
+   * Recupera il valore dell'alias dal form e chiama il metodo addArea$ di AppService.
+   * In caso di aggiunta riuscita, naviga alla root route.
    */
   addArea() {
     const alias = this.formData.get("alias").value;
-    
 
     console.log(alias);
 

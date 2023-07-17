@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -77,10 +77,10 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>A list component for Lamps.
-This component is responsible for managing events and passing data to the presentational component.
-It interfaces with the AppService to load data and toggle lamp status.
-This component uses the OnPush change detection strategy.</p>
+        <p>Un componente di lista per le lampade.
+Questo componente è responsabile della gestione degli eventi e del passaggio dei dati al componente presentazionale.
+Interagisce con l&#39;AppService per caricare i dati e per cambiare lo stato delle lampade.
+Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.</p>
 
     </p>
 
@@ -246,8 +246,8 @@ This component uses the OnPush change detection strategy.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Implementation of the OnInit lifecycle hook
-Here, the loadData method of the service is called.</p>
+                    <div class="io-description"><p>Implementazione del hook del ciclo di vita OnInit.
+Qui viene chiamato il metodo loadData del servizio.</p>
 </div>
 
                     <div class="io-description">
@@ -286,8 +286,8 @@ Here, the loadData method of the service is called.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Method to toggle the status of a lamp.
-This method makes use of the AppService to toggle the lamp.</p>
+                    <div class="io-description"><p>Metodo per cambiare lo stato di una lampada.
+Questo metodo utilizza l&#39;AppService per cambiare lo stato della lampada.</p>
 </div>
 
                     <div class="io-description">
@@ -316,7 +316,7 @@ This method makes use of the AppService to toggle the lamp.</p>
 
                                     <td>
                                         <ul>
-<li>The LampStatus instance to toggle</li>
+<li>L&#39;istanza di LampStatus da cambiare</li>
 </ul>
 
                                     </td>
@@ -367,8 +367,8 @@ This method makes use of the AppService to toggle the lamp.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An observable of the lamps array.
-This is used to keep track of the list of lamps in real time.</p>
+                    <div class="io-description"><p>Un osservabile dell&#39;array di lampade.
+Viene utilizzato per tenere traccia della lista di lampade in tempo reale.</p>
 </div>
                 </td>
             </tr>
@@ -399,8 +399,8 @@ This is used to keep track of the list of lamps in real time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An observable of the loading status.
-This is used to manage the loading state of the component.</p>
+                    <div class="io-description"><p>Un osservabile dello stato di caricamento.
+Viene utilizzato per gestire lo stato di caricamento del componente.</p>
 </div>
                 </td>
             </tr>
@@ -420,7 +420,7 @@ This is used to manage the loading state of the component.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject (AppService)</code>
+                        <i>Default value : </i><code>inject(AppService)</code>
                     </td>
                 </tr>
                     <tr>
@@ -431,8 +431,8 @@ This is used to manage the loading state of the component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the AppService.
-This is used to interact with the backend.</p>
+                    <div class="io-description"><p>Istanza di AppService.
+Viene utilizzata per interagire con il backend.</p>
 </div>
                 </td>
             </tr>
@@ -469,8 +469,8 @@ This is used to interact with the backend.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Function to track lamps by id.
-This helps Angular to optimize the rendering of lists.</p>
+                    <div class="io-description"><p>Funzione per tracciare le lampade in base all&#39;id.
+Questo aiuta Angular ad ottimizzare il rendering delle liste.</p>
 </div>
                 </td>
             </tr>
@@ -484,22 +484,22 @@ This helps Angular to optimize the rendering of lists.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } from &quot;@angular/core&quot;;
-// Import for the LampButtonComponent
+// Import per il componente LampButtonComponent
 import { LampButtonComponent } from &quot;../../components/lamp-button/lamp-button.component&quot;;
-// Import for the LampStatus model
+// Import per il modello LampStatus
 import { LampStatus } from &quot;../../model&quot;;
-// Import for the AppService
+// Import per l&#x27;AppService
 import { AppService } from &quot;../../services/app.service&quot;;
 
 /**
- * A list component for Lamps.
- * This component is responsible for managing events and passing data to the presentational component.
- * It interfaces with the AppService to load data and toggle lamp status.
- * This component uses the OnPush change detection strategy.
+ * Un componente di lista per le lampade.
+ * Questo componente è responsabile della gestione degli eventi e del passaggio dei dati al componente presentazionale.
+ * Interagisce con l&#x27;AppService per caricare i dati e per cambiare lo stato delle lampade.
+ * Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.
  */
-@Component ({
+@Component({
   selector: &quot;app-lamps-list&quot;,
   standalone: true,
   imports: [CommonModule, LampButtonComponent],
@@ -509,44 +509,44 @@ import { AppService } from &quot;../../services/app.service&quot;;
 })
 export class LampsListComponent implements OnInit {
   /**
-   * Implementation of the OnInit lifecycle hook
-   * Here, the loadData method of the service is called.
+   * Implementazione del hook del ciclo di vita OnInit.
+   * Qui viene chiamato il metodo loadData del servizio.
    */
-  ngOnInit () {
-    this.service.loadData ();
+  ngOnInit() {
+    this.service.loadData();
   }
-  
-  /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
-   */
-  service &#x3D; inject (AppService);
 
   /**
-   * An observable of the lamps array.
-   * This is used to keep track of the list of lamps in real time.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
+   */
+  service &#x3D; inject(AppService);
+
+  /**
+   * Un osservabile dell&#x27;array di lampade.
+   * Viene utilizzato per tenere traccia della lista di lampade in tempo reale.
    */
   lamps$ &#x3D; this.service.lamps$;
 
   /**
-   * An observable of the loading status.
-   * This is used to manage the loading state of the component.
+   * Un osservabile dello stato di caricamento.
+   * Viene utilizzato per gestire lo stato di caricamento del componente.
    */
   loading$ &#x3D; this.service.loading$;
 
   /**
-   * Function to track lamps by id.
-   * This helps Angular to optimize the rendering of lists.
+   * Funzione per tracciare le lampade in base all&#x27;id.
+   * Questo aiuta Angular ad ottimizzare il rendering delle liste.
    */
   trackByLampId: TrackByFunction&lt;LampStatus&gt; &#x3D; (index: number, lamp: LampStatus) &#x3D;&gt; lamp.id;
-  
+
   /**
-   * Method to toggle the status of a lamp.
-   * This method makes use of the AppService to toggle the lamp.
-   * @param lamp - The LampStatus instance to toggle
+   * Metodo per cambiare lo stato di una lampada.
+   * Questo metodo utilizza l&#x27;AppService per cambiare lo stato della lampada.
+   * @param lamp - L&#x27;istanza di LampStatus da cambiare
    */
-  toggleLamp (lamp: LampStatus) {
-    this.service.toggleLamp (lamp);
+  toggleLamp(lamp: LampStatus) {
+    this.service.toggleLamp(lamp);
   }
 }
 </code></pre>

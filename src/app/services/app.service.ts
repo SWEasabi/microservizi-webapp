@@ -1,7 +1,7 @@
 /**
- * The main service for managing application state.
- * Handles operations related to lamps, sensors, and areas, including
- * loading data from the API, managing errors, and updating state.
+ * Il servizio principale per la gestione dello stato dell'applicazione.
+ * Gestisce le operazioni relative alle lampade, ai sensori e alle aree,
+ * compresa la lettura dei dati dall'API, la gestione degli errori e l'aggiornamento dello stato.
  */
 
 import { HttpStatusCode } from "@angular/common/http";
@@ -11,42 +11,42 @@ import { LampStatus, SensorStatus, AreaStatus } from "../model";
 import { ApiService } from "./api.service";
 
 /**
- * Interface representing the application state store.
- * It contains arrays of lamps, sensors, and areas,
- * as well as loading and error flags.
+ * Interfaccia che rappresenta lo store dello stato dell'applicazione.
+ * Contiene array di lampade, sensori e aree,
+ * inoltre si interessa di segnalare se i dati sono attualmente in caricamento o se si tratta del primo caricamento.
  */
 interface Store {
   /**
-   * An array of lamp statuses representing the state of lamps in the application.
+   * Un array di stati delle lampade che rappresentano lo stato delle lampade nell'applicazione.
    */
   lamps: LampStatus[];
   /**
-   * An array of sensor statuses representing the state of sensors in the application.
+   * Un array di stati dei sensori che rappresentano lo stato dei sensori nell'applicazione.
    */
   sensors: SensorStatus[];
   /**
-   * An array of area statuses representing the state of areas in the application.
+   * Un array di stati delle aree che rappresentano lo stato delle aree nell'applicazione.
    */
   areas: AreaStatus[];
   /**
-   * A flag indicating whether data is currently being loaded or fetched.
+   * Un indicatore che segnala se i dati sono attualmente in caricamento o ottenuti dall'API.
    */
   loading: boolean;
   /**
-   * A flag indicating whether it is the first load of data.
+   * Un indicatore che segnala se si tratta del primo caricamento dei dati.
    */
   firstLoad: boolean;
   /**
-   * A string representing an error message in case of any errors.
+   * Una stringa che rappresenta un messaggio di errore in caso di errori.
    */
   error: string;
 }
 
 
 /**
- * Initial state for the application store.
- * Contains empty arrays for lamps, sensors, and areas,
- * and sets the loading and firstLoad flags to false.
+ * Stato iniziale per lo store dell'applicazione.
+ * Contiene array vuoti per lampade, sensori e aree,
+ * e imposta a false gli indicatori di caricamento e primo caricamento.
  */
 const initialState: Store = {
   lamps: [],
@@ -58,9 +58,9 @@ const initialState: Store = {
 };
 
 /**
- * The main service for managing application state.
- * Handles operations related to lamps, sensors, and areas, including
- * loading data from the API, managing errors, and updating state.
+ * Il servizio principale per la gestione dello stato dell'applicazione.
+ * Gestisce le operazioni relative alle lampade, ai sensori e alle aree,
+ * compresa la lettura dei dati dall'API, la gestione degli errori e l'aggiornamento dello stato.
  */
 @Injectable({
   providedIn: "root"
@@ -69,20 +69,20 @@ const initialState: Store = {
 export class AppService {
 
   /**
-   * Inject the ApiService.
+   * Inietta ApiService.
    */
   api = inject(ApiService);
 
   /**
-   * Define the application's main state store as a BehaviorSubject.
-   * This is an RxJS Subject that can emit new values to its subscribers
-   * and has the characteristic that it will always return the last value emitted to new subscribers.
-   * Here it's initialized with an initial state.
+   * Definisce lo store principale dello stato dell'applicazione come BehaviorSubject.
+   * Si tratta di un Subject RxJS che può emettere nuovi valori ai suoi sottoscrittori
+   * e ha la caratteristica di restituire sempre l'ultimo valore emesso ai nuovi sottoscrittori.
+   * Viene inizializzato qui con uno stato iniziale.
    */
 
   $store = new BehaviorSubject<Store>(initialState);
   /**
-     * Define selectors for different pieces of state.
+     * Definisce selettori per diverse parti dello state.
      */
   readonly lamps$ = this.$store.pipe(map(state => state.lamps));
   readonly sensors$ = this.$store.pipe(map(state => state.sensors));
@@ -92,34 +92,51 @@ export class AppService {
   readonly firstLoad$ = this.$store.pipe(map(state => state.firstLoad));
 
   /**
-   * Load lamp data from the API.
-   * Update the state with the new data, manage any errors,
-   * and stop the loading spinner when complete.
-   */
-  public loadData() {
-    this.startLoading();
-    this.api.getAllLamps$()
-      .subscribe({
-        next: (lamps) => {
-          this.$store.next({
-            ...this.$store.value,
-            lamps,
-            firstLoad: false
-          });
-        },
-        error: (error) => {
-          this.manageError(error);
-          this.stopLoading();
-        },
-        complete: () => {
-          this.stopLoading();
-        }
+ * Carica i dati delle lampade dall'API.
+ * Aggiorna lo stato con i nuovi dati, gestisce eventuali errori,
+ * e interrompe l'animazione di caricamento una volta completato.
+ */
+public loadData() {
+  // Avvia l'animazione di caricamento.
+  this.startLoading();
+
+  // Chiama il metodo getAllLamps$() del servizio api per ottenere i dati delle lampade.
+  // Questo metodo restituisce un Observable che emette i dati delle lampade.
+  this.api.getAllLamps$().subscribe({
+    // Callback "next": Eseguita quando nuovi dati (lampade) sono emessi dall'Observable.
+    next: (lamps) => {
+      // Aggiorna lo stato dell'applicazione con i nuovi dati utilizzando this.$store.next(...).
+      // Viene creato un nuovo oggetto di stato tramite il spreading dello stato esistente (this.$store.value)
+      // e sostituendo la proprietà "lamps" con i nuovi dati ("lamps").
+      // Imposta anche la proprietà "firstLoad" a "false" per indicare che non è il primo caricamento.
+      this.$store.next({
+        ...this.$store.value,
+        lamps,
+        firstLoad: false
       });
-  }
+    },
+    // Callback "error": Eseguita in caso di errore durante il recupero dei dati.
+    error: (error) => {
+      // Gestisce l'errore chiamando il metodo "manageError(error)".
+      // Il metodo "manageError" aggiorna lo stato con un messaggio di errore appropriato
+      // basato sul codice di stato HTTP dell'errore.
+      // Successivamente, chiama "this.stopLoading()" per interrompere l'animazione di caricamento.
+      this.manageError(error);
+      this.stopLoading();
+    },
+    // Callback "complete": Eseguita quando l'Observable è completato,
+    // indicando che il processo di caricamento dei dati è terminato (con successo o con un errore).
+    complete: () => {
+      // Chiama "this.stopLoading()" per interrompere l'animazione di caricamento.
+      this.stopLoading();
+    }
+  });
+}
+
   /**
-     * Load sensor data from the API.
-     * Update the state with the new data, manage any errors,
-     * and stop the loading spinner when complete.
+     * Carica i dati dei sensori dall'API.
+     * Aggiorna lo stato con i nuovi dati, gestisce eventuali errori,
+     * e interrompe l'animazione di caricamento una volta completato.
      */
   public loadDataSensors() {
     this.startLoading();
@@ -142,9 +159,9 @@ export class AppService {
       });
   }
   /**
-     * Load area data from the API.
-     * Update the state with the new data, manage any errors,
-     * and stop the loading spinner when complete.
+     * Carica i dati delle aree dall'API.
+     * Aggiorna lo stato con i nuovi dati, gestisce eventuali errori,
+     * e interrompe l'animazione di caricamento una volta completato.
      */
   public loadDataAreas() {
     this.startLoading();
@@ -169,16 +186,20 @@ export class AppService {
 
 
   /**
-     * Start the loading spinner.
-     */
-  private startLoading() {
-    this.$store.next({
-      ...this.$store.value,
-      loading: true
-    });
-  }
+ * Avvia l'animazione di caricamento.
+ */
+private startLoading() {
+  // Aggiorna lo stato dell'applicazione per indicare che il caricamento dei dati è in corso.
+  // Viene creato un nuovo oggetto di stato tramite lo spreading dello stato esistente (this.$store.value)
+  // e impostando la proprietà "loading" a "true".
+  this.$store.next({
+    ...this.$store.value,
+    loading: true
+  });
+}
+
   /**
-     * Stop the loading spinner.
+     * Interrompe l'animazione di caricamento.
      */
   private stopLoading() {
     this.$store.next({
@@ -187,8 +208,8 @@ export class AppService {
     });
   }
   /**
-     * Update a lamp's pending status.
-     * This is used to show that a lamp's status is being changed.
+     * Aggiorna lo stato di una lampada come in attesa.
+     * Questo viene utilizzato per mostrare che lo stato di una lampada sta cambiando.
      */
   private setLampPending(lamp: LampStatus, pending: boolean) {
     this.$store.next({
@@ -197,9 +218,9 @@ export class AppService {
     });
   }
   /**
-     * Toggle a lamp's status.
-     * Call the API to update the lamp's status,
-     * then reload the lamp data to reflect the changes.
+     * Inverte lo stato di una lampada.
+     * Chiama l'API per aggiornare lo stato della lampada,
+     * quindi ricarica i dati delle lampade per riflettere le modifiche.
      */
   public toggleLamp(lamp: LampStatus) {
     this.setLampPending(lamp, true);
@@ -209,9 +230,9 @@ export class AppService {
       });
   }
   /**
-     * Toggle a sensor's status.
-     * Call the API to update the sensor's status,
-     * then reload the sensor data to reflect the changes.
+     * Inverte lo stato di un sensore.
+     * Chiama l'API per aggiornare lo stato del sensore,
+     * quindi ricarica i dati dei sensori per riflettere le modifiche.
      */
   public toggleSensor(sensor: SensorStatus) {
     this.setLampPending(sensor, true);
@@ -222,29 +243,29 @@ export class AppService {
   }
 
   /**
-     * Manage errors.
-     * Update the state with an appropriate error message based on the HTTP status code.
+     * Gestisce gli errori.
+     * Aggiorna lo stato con un messaggio di errore appropriato in base al codice di stato HTTP.
      */
 
   private manageError(error: any) {
     if (error.status === HttpStatusCode.NotFound) {
       this.$store.next({
         ...this.$store.value,
-        error: "Not found"
+        error: "Non trovato"
       });
     } else {
       this.$store.next({
         ...this.$store.value,
-        error: "Error"
+        error: "Errore"
       });
     }
   }
   /**
-  * Add a new lamp with the provided alias.
-  * Start the loading spinner, call the API to add the lamp,
-  * then stop the loading spinner and reload the lamp data.
-  * @param alias The alias of the new lamp.
-  * @returns An observable that emits a boolean value indicating whether the lamp addition was successful.
+  * Aggiunge una nuova lampada con l'alias fornito.
+  * Avvia l'animazione di caricamento, chiama l'API per aggiungere la lampada,
+  * quindi interrompe l'animazione di caricamento e ricarica i dati delle lampade.
+  * @param alias L'alias della nuova lampada.
+  * @returns Un osservabile che emette un valore booleano che indica se l'aggiunta della lampada è stata eseguita con successo.
   */
   public addLamp$(alias: string): Observable<boolean> {
     return of(true)
@@ -257,13 +278,13 @@ export class AppService {
       );
   }
   /**
-   * Add a new sensor with the provided alias, geo position, and action range.
-   * Start the loading spinner, call the API to add the sensor,
-   * then stop the loading spinner and reload the sensor data.
-   * @param alias The alias of the new sensor.
-   * @param geoPos The geographic position of the new sensor.
-   * @param actionRange The action range of the new sensor.
-   * @returns An observable that emits a boolean value indicating whether the sensor addition was successful.
+   * Aggiunge un nuovo sensore con l'alias, la posizione geografica e l'azione forniti.
+   * Avvia l'animazione di caricamento, chiama l'API per aggiungere il sensore,
+   * quindi interrompe l'animazione di caricamento e ricarica i dati dei sensori.
+   * @param alias L'alias del nuovo sensore.
+   * @param geoPos La posizione geografica del nuovo sensore.
+   * @param actionRange L'azione del nuovo sensore.
+   * @returns Un osservabile che emette un valore booleano che indica se l'aggiunta del sensore è stata eseguita con successo.
    */
 
   public addSensor$(alias: string, geoPos: string, actionRange: string): Observable<boolean> {
@@ -277,11 +298,11 @@ export class AppService {
       );
   }
   /**
- * Add a new area with the provided alias.
- * Start the loading spinner, call the API to add the area,
- * then stop the loading spinner and reload the area data.
- * @param alias The alias of the new area.
- * @returns An observable that emits a boolean value indicating whether the area addition was successful.
+ * Aggiunge una nuova area con l'alias fornito.
+ * Avvia l'animazione di caricamento, chiama l'API per aggiungere l'area,
+ * quindi interrompe l'animazione di caricamento e ricarica i dati delle aree.
+ * @param alias L'alias della nuova area.
+ * @returns Un osservabile che emette un valore booleano che indica se l'aggiunta dell'area è stata eseguita con successo.
  */
   public addArea$(alias: string): Observable<boolean> {
     return of(true)
@@ -297,4 +318,3 @@ export class AppService {
   }
 
 }
-

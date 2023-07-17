@@ -3,76 +3,76 @@ import { Injectable } from '@angular/core';
 import { LampStatus, SensorStatus, AreaStatus } from '../model';
 
 /**
- * Service for making API requests related to lamps, sensors, and areas.
+ * Servizio per effettuare richieste API relative a lampade, sensori e aree.
  */
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   /**
-   * Constructs the ApiService with the HttpClient dependency injected.
-   * @param http The HttpClient instance used for making HTTP requests.
+   * Costruisce l'ApiService con l'iniezione della dipendenza HttpClient.
+   * @param http L'istanza HttpClient utilizzata per effettuare richieste HTTP.
    */
   constructor(private http: HttpClient) {}
 
   /**
-   * Retrieves all lamps from the API.
-   * @returns An observable of type LampStatus[] representing the list of lamps.
+   * Recupera tutte le lampade dall'API.
+   * @returns Un osservabile di tipo LampStatus[] che rappresenta l'elenco delle lampade.
    */
   getAllLamps$() {
     return this.http.get<LampStatus[]>(`/lamps`);
   }
 
   /**
-   * Retrieves all sensors from the API.
-   * @returns An observable of type SensorStatus[] representing the list of sensors.
+   * Recupera tutti i sensori dall'API.
+   * @returns Un osservabile di tipo SensorStatus[] che rappresenta l'elenco dei sensori.
    */
   getAllSensors$() {
     return this.http.get<SensorStatus[]>(`/sensors`);
   }
 
   /**
-   * Retrieves all areas from the API.
-   * @returns An observable of type AreaStatus[] representing the list of areas.
+   * Recupera tutte le aree dall'API.
+   * @returns Un osservabile di tipo AreaStatus[] che rappresenta l'elenco delle aree.
    */
   getAllAreas$() {
     return this.http.get<AreaStatus[]>(`/areas`);
   }
 
   /**
-   * Updates the status of a lamp in the API.
-   * @param lampId The ID of the lamp to be updated.
-   * @param newStatus The new status to be set for the lamp.
-   * @returns An observable of type string representing the result of the update operation.
+   * Aggiorna lo stato di una lampada nell'API.
+   * @param lampId L'ID della lampada da aggiornare.
+   * @param newStatus Il nuovo stato da impostare per la lampada.
+   * @returns Un osservabile di tipo string che rappresenta il risultato dell'operazione di aggiornamento.
    */
   toggleLamp$(lampId: LampStatus['id'], newStatus: LampStatus['status']) {
     return this.http.put<string>(`/lamps/${lampId}/switch/${newStatus}`, null);
   }
 
   /**
-   * Adds a new lamp to the API.
-   * @param alias The alias of the new lamp.
-   * @returns An observable of type LampStatus representing the newly added lamp.
+   * Aggiunge una nuova lampada all'API.
+   * @param alias L'alias della nuova lampada.
+   * @returns Un osservabile di tipo LampStatus che rappresenta la lampada appena aggiunta.
    */
   addLamp$(alias: string) {
     return this.http.post<LampStatus>('/lamps', { alias });
   }
 
   /**
-   * Adds a new sensor to the API.
-   * @param alias The alias of the new sensor.
-   * @param geoPos The geographic position of the new sensor.
-   * @param actionRange The action range of the new sensor.
-   * @returns An observable of type SensorStatus representing the newly added sensor.
+   * Aggiunge un nuovo sensore all'API.
+   * @param alias L'alias del nuovo sensore.
+   * @param geoPos La posizione geografica del nuovo sensore.
+   * @param actionRange Il raggio di azione del nuovo sensore.
+   * @returns Un osservabile di tipo SensorStatus che rappresenta il sensore appena aggiunto.
    */
   addSensor$(alias: string, geoPos: string, actionRange: string) {
     return this.http.post<SensorStatus>('/sensors', { alias, geoPos, actionRange });
   }
 
   /**
-   * Adds a new area to the API.
-   * @param alias The alias of the new area.
-   * @returns An observable of type AreaStatus representing the newly added area.
+   * Aggiunge una nuova area all'API.
+   * @param alias L'alias della nuova area.
+   * @returns Un osservabile di tipo AreaStatus che rappresenta l'area appena aggiunta.
    */
   addArea$(alias: string) {
     return this.http.post<AreaStatus>('/areas', { alias });

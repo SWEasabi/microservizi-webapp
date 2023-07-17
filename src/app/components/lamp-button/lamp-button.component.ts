@@ -1,17 +1,17 @@
-// Importing Angular's common module
+// Importando componenti necessari da Angular common
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessary da Angular core
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-// Import from RxJS library
+// Importa last da RxJS
 import { last } from "rxjs";
-// Import for the LampStatus model
+// Importa da modello LampStatus
 import { LampStatus } from "../../model";
 
 /**
- * Component for Lamp Button.
- * This is a presentational component which receives data as an Input and emits events as Output.
- * It's responsible for displaying a single lamp status and emits events when actions are taken on it.
- * This component uses the OnPush change detection strategy.
+ * Componente per Lamp Button.
+ * Questo è un componente di presentazione che riceve dati come input ed emette eventi come output.
+ * È responsabile della visualizzazione dello stato di una singola lampada ed emette eventi quando vengono intraprese azioni su di essa.
+ * Questo componente utilizza la strategia di rilevamento delle modifiche OnPush.
  */
 @Component ({
   selector: "app-lamp-button",
@@ -24,20 +24,20 @@ import { LampStatus } from "../../model";
 
 export class LampButtonComponent {
   /**
-   * Input data of type LampStatus.
-   * This is passed in from a parent component and represents the status of a particular lamp.
+   * Input data di tipo LampStatus.
+   * Questo è passato da un componente genitore e rappresenta lo stato di una particolare lampada.
    */
   @Input () data: LampStatus;
-  
+
   /**
-   * Output EventEmitter to be emitted when lamp status is toggled.
-   * It emits an event whenever a user interacts with this component.
+   * Output EventEmitter da emettere quando lo stato della lampada viene attivata.
+   * Emette un evento ogni volta che un utente interagisce con la lampada.
    */
   @Output () toggleLamp = new EventEmitter<void> ();
 
   /**
-   * An RxJS operator that emits only the last value (complete) of an observable sequence.
-   * It's protected and can be used within the component and its descendants.
+   * Un operatore RxJS che emette solo l'ultimo valore (completo) di una sequenza osservabile.
+   * E' protetto e può essere utilizzato all'interno del componente e dei suoi discendenti.
    */
   protected readonly last = last;
 }

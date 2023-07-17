@@ -1,21 +1,21 @@
-// Angular's common module
+// Modulo comune di Angular
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } from "@angular/core";
-// Import for the AreaButtonComponent
+// Import per l'AreaButtonComponent
 import { AreaButtonComponent } from "../../components/area-button/area-button.component";
-// Import for the AreaStatus model
+// Import per il modello AreaStatus
 import { AreaStatus } from "../../model";
-// Import for the AppService
+// Import per l'AppService
 import { AppService } from "../../services/app.service";
 
 /**
- * A list component for Areas.
- * This component is responsible for managing events and passing data to the presentational component.
- * It interfaces with the AppService to load data.
- * This component uses the OnPush change detection strategy.
+ * Componente lista per le Aree.
+ * Questo componente si occupa di gestire gli eventi e passare i dati al componente presentazionale.
+ * Interagisce con l'AppService per caricare i dati delle aree.
+ * Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.
  */
-@Component ({
+@Component({
   selector: "app-areas-list",
   standalone: true,
   imports: [CommonModule, AreaButtonComponent],
@@ -25,37 +25,37 @@ import { AppService } from "../../services/app.service";
 })
 export class AreasListComponent implements OnInit {
   /**
-   * Implementation of the OnInit lifecycle hook
-   * Here, the loadDataAreas method of the service is called.
+   * Implementazione dell'hook del ciclo di vita OnInit.
+   * Qui viene chiamato il metodo loadDataAreas del servizio.
    */
-  ngOnInit () {
+  ngOnInit() {
     this.service.loadDataAreas();
   }
-  
-  /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
-   */
-  service = inject (AppService);
 
   /**
-   * An observable of the areas array.
-   * This is used to keep track of the list of areas in real time.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
+   */
+  service = inject(AppService);
+
+  /**
+   * Un osservabile dell'array delle aree.
+   * Viene utilizzato per tenere traccia della lista delle aree in tempo reale.
    */
   areas$ = this.service.areas$;
 
   /**
-   * An observable of the loading status.
-   * This is used to manage the loading state of the component.
+   * Un osservabile dello stato di caricamento.
+   * Viene utilizzato per gestire lo stato di caricamento del componente.
    */
   loading$ = this.service.loading$;
 
   /**
-   * Function to track areas by id.
-   * This helps Angular to optimize the rendering of lists.
+   * Funzione per tracciare le aree per id.
+   * Questo aiuta Angular ad ottimizzare il rendering delle liste.
    */
   trackByAreaId: TrackByFunction<AreaStatus> = (index: number, area: AreaStatus) => area.id;
-  
-  // As of now, there's no event management in this component.
-  // Any future events and their handlers should be documented here.
+
+  // Al momento, in questo componente non ci sono gestori di eventi.
+  // Eventuali futuri eventi e i relativi gestori dovrebbero essere documentati qui.
 }

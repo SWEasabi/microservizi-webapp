@@ -1,15 +1,15 @@
-// Importing Component from Angular Core
+// Importa Component da Angular Core
 import { Component } from "@angular/core";
 
 /**
- * This is the root component of the application.
+ * Questo è il componente radice dell'applicazione.
  */
-@Component ({
+@Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  // Currently, the AppComponent is a simple, featureless component.
-  // If any behavior or lifecycle hooks are added, they should be documented here.
+  // Attualmente, l'AppComponent è un componente semplice e senza funzionalità particolari.
+  // Se vengono aggiunte nuove funzionalità o hook del ciclo di vita, dovrebbero essere documentati qui.
 }

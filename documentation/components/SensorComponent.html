@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -77,9 +77,9 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Component for Sensor.
-This component contains a form for adding a new sensor.
-It interacts with the AppService to add new sensors and navigate back to the root route upon successful addition.</p>
+        <p>Componente per il sensore.
+Questo componente contiene un form per aggiungere un nuovo sensore.
+Interagisce con l&#39;AppService per aggiungere nuovi sensori e navigare verso la route principale in caso di aggiunta avvenuta con successo.</p>
 
     </p>
 
@@ -237,9 +237,9 @@ It interacts with the AppService to add new sensors and navigate back to the roo
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Function to add a new sensor.
-It retrieves the alias, geoPos, and actionRange values from the form and calls the addSensor$ method of the AppService.
-Upon successful addition, it navigates back to the root route.</p>
+                    <div class="io-description"><p>Funzione per aggiungere un nuovo sensore.
+Recupera i valori di alias, geoPos e actionRange dal form e chiama il metodo addSensor$ dell&#39;AppService.
+In caso di aggiunta avvenuta con successo, naviga verso la route principale.</p>
 </div>
 
                     <div class="io-description">
@@ -280,8 +280,8 @@ Upon successful addition, it navigates back to the root route.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the AppService.
-This is used to interact with the backend.</p>
+                    <div class="io-description"><p>Istanza di AppService.
+Viene utilizzata per interagire con il backend.</p>
 </div>
                 </td>
             </tr>
@@ -312,8 +312,8 @@ This is used to interact with the backend.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An observable of the error status.
-This is used to manage the error state of the component.</p>
+                    <div class="io-description"><p>Un osservabile dello stato di errore.
+Viene utilizzato per gestire lo stato di errore del componente.</p>
 </div>
                 </td>
             </tr>
@@ -344,8 +344,8 @@ This is used to manage the error state of the component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the FormBuilder.
-This is used to create a reactive form for adding new sensors.</p>
+                    <div class="io-description"><p>Istanza di FormBuilder.
+Viene utilizzata per creare un form reattivo per l&#39;aggiunta di nuovi sensori.</p>
 </div>
                 </td>
             </tr>
@@ -380,8 +380,8 @@ This is used to create a reactive form for adding new sensors.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the FormGroup.
-This is used to create and manage the form controls.</p>
+                    <div class="io-description"><p>Istanza di FormGroup.
+Viene utilizzata per creare e gestire i controlli del form.</p>
 </div>
                 </td>
             </tr>
@@ -412,8 +412,8 @@ This is used to create and manage the form controls.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the Router.
-This is used to navigate among routes.</p>
+                    <div class="io-description"><p>Istanza di Router.
+Viene utilizzata per navigare tra le route.</p>
 </div>
                 </td>
             </tr>
@@ -427,19 +427,19 @@ This is used to navigate among routes.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject } from &quot;@angular/core&quot;;
-// Imports for the form controls
+// Import per i form controls
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from &quot;@angular/forms&quot;;
-// Import for the Router
+// Import per il Router
 import { Router, RouterModule } from &quot;@angular/router&quot;;
-// Import for the AppService
+// Import per l&#x27;AppService
 import { AppService } from &quot;../../services/app.service&quot;;
 
 /**
- * Component for Sensor.
- * This component contains a form for adding a new sensor.
- * It interacts with the AppService to add new sensors and navigate back to the root route upon successful addition.
+ * Componente per il sensore.
+ * Questo componente contiene un form per aggiungere un nuovo sensore.
+ * Interagisce con l&#x27;AppService per aggiungere nuovi sensori e navigare verso la route principale in caso di aggiunta avvenuta con successo.
  */
 @Component({
   selector: &quot;app-sensor&quot;,
@@ -450,26 +450,26 @@ import { AppService } from &quot;../../services/app.service&quot;;
 })
 export class SensorComponent {
   /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
    */
   appService &#x3D; inject(AppService);
 
   /**
-   * Instance of the Router.
-   * This is used to navigate among routes.
+   * Istanza di Router.
+   * Viene utilizzata per navigare tra le route.
    */
   router &#x3D; inject(Router);
 
   /**
-   * Instance of the FormBuilder.
-   * This is used to create a reactive form for adding new sensors.
+   * Istanza di FormBuilder.
+   * Viene utilizzata per creare un form reattivo per l&#x27;aggiunta di nuovi sensori.
    */
   formBuilder &#x3D; inject(FormBuilder);
 
   /**
-   * Instance of the FormGroup.
-   * This is used to create and manage the form controls.
+   * Istanza di FormGroup.
+   * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData &#x3D; this.formBuilder.group({
     alias: this.formBuilder.control(&quot;&quot;, [Validators.required]),
@@ -478,15 +478,15 @@ export class SensorComponent {
   });
 
   /**
-   * An observable of the error status.
-   * This is used to manage the error state of the component.
+   * Un osservabile dello stato di errore.
+   * Viene utilizzato per gestire lo stato di errore del componente.
    */
   error$ &#x3D; this.appService.error$;
 
   /**
-   * Function to add a new sensor.
-   * It retrieves the alias, geoPos, and actionRange values from the form and calls the addSensor$ method of the AppService.
-   * Upon successful addition, it navigates back to the root route.
+   * Funzione per aggiungere un nuovo sensore.
+   * Recupera i valori di alias, geoPos e actionRange dal form e chiama il metodo addSensor$ dell&#x27;AppService.
+   * In caso di aggiunta avvenuta con successo, naviga verso la route principale.
    */
   addSensor() {
     const alias &#x3D; this.formData.get(&quot;alias&quot;).value;

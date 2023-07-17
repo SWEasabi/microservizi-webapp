@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -79,13 +79,13 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Represents the status of a sensor.
-The <code>status</code> field can be &#39;On&#39; or &#39;Off&#39;.
-The <code>id</code> field is a unique identifier for the sensor.
-The <code>alias</code> field is a friendly name for the sensor.
-The <code>pending</code> field is an optional field that denotes whether a sensor&#39;s status change is in progress or not.
-The <code>geoPos</code> field represents the geographic position of the sensor.
-The <code>actionRange</code> field indicates the range within which the sensor operates.</p>
+                <p>Rappresenta lo stato di un sensore.
+Il campo <code>status</code> può essere &#39;On&#39; (attivato) o &#39;Off&#39; (disattivato).
+Il campo <code>id</code> è un identificatore univoco per il sensore.
+Il campo <code>alias</code> è un nome amichevole per il sensore.
+Il campo <code>pending</code> è un campo opzionale che indica se il cambio di stato del sensore è in corso o meno.
+Il campo <code>geoPos</code> rappresenta la posizione geografica del sensore.
+Il campo <code>actionRange</code> indica il raggio entro cui il sensore opera.</p>
 
             </p>
 
@@ -183,7 +183,7 @@ The <code>actionRange</code> field indicates the range within which the sensor o
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The range within which the sensor operates.</p>
+                                    <div class="io-description"><p>Il raggio entro cui il sensore opera.</p>
 </div>
                                 </td>
                             </tr>
@@ -222,7 +222,7 @@ The <code>actionRange</code> field indicates the range within which the sensor o
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The friendly name of the sensor.</p>
+                                    <div class="io-description"><p>Alias del sensore.</p>
 </div>
                                 </td>
                             </tr>
@@ -261,7 +261,7 @@ The <code>actionRange</code> field indicates the range within which the sensor o
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The geographic position of the sensor.</p>
+                                    <div class="io-description"><p>La posizione geografica del sensore.</p>
 </div>
                                 </td>
                             </tr>
@@ -300,7 +300,7 @@ The <code>actionRange</code> field indicates the range within which the sensor o
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The unique identifier of the sensor.</p>
+                                    <div class="io-description"><p>L&#39;identificatore univoco del sensore.</p>
 </div>
                                 </td>
                             </tr>
@@ -344,7 +344,7 @@ The <code>actionRange</code> field indicates the range within which the sensor o
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>(Optional) Denotes whether a sensor&#39;s status change is in progress or not.</p>
+                                    <div class="io-description"><p>(Opzionale) Indica se il cambio di stato del sensore è in corso o meno.</p>
 </div>
                                 </td>
                             </tr>
@@ -383,8 +383,8 @@ The <code>actionRange</code> field indicates the range within which the sensor o
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The current status of the sensor.
-Can be either &#39;On&#39; or &#39;Off&#39;.</p>
+                                    <div class="io-description"><p>Lo stato corrente del sensore.
+Può essere &#39;On&#39; (attivato) o &#39;Off&#39; (disattivato).</p>
 </div>
                                 </td>
                             </tr>
@@ -397,79 +397,79 @@ Can be either &#39;On&#39; or &#39;Off&#39;.</p>
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface LampStatus {
   /**
-   * The current status of the lamp.
-   * Can be either &#x27;On&#x27; or &#x27;Off&#x27;.
+   * Lo stato corrente della lampada.
+   * Può essere &#x27;On&#x27; (acceso) o &#x27;Off&#x27; (spento).
    */
   status: &quot;On&quot; | &quot;Off&quot;;
   /**
-   * The unique identifier of the lamp.
+   * L&#x27;identificatore univoco della lampada.
    */
   id: string;
   /**
-   * The friendly name of the lamp.
+   * Alias della lampada.
    */
   alias: string;
   /**
-   * (Optional) Denotes whether a lamp&#x27;s status change is in progress or not.
+   * (Opzionale) Indica se il cambio di stato della lampada è in corso o meno.
    */
   pending?: boolean;
 }
 
 /**
- * Represents the status of a sensor.
- * The &#x60;status&#x60; field can be &#x27;On&#x27; or &#x27;Off&#x27;.
- * The &#x60;id&#x60; field is a unique identifier for the sensor.
- * The &#x60;alias&#x60; field is a friendly name for the sensor.
- * The &#x60;pending&#x60; field is an optional field that denotes whether a sensor&#x27;s status change is in progress or not.
- * The &#x60;geoPos&#x60; field represents the geographic position of the sensor.
- * The &#x60;actionRange&#x60; field indicates the range within which the sensor operates.
+ * Rappresenta lo stato di un sensore.
+ * Il campo &#x60;status&#x60; può essere &#x27;On&#x27; (attivato) o &#x27;Off&#x27; (disattivato).
+ * Il campo &#x60;id&#x60; è un identificatore univoco per il sensore.
+ * Il campo &#x60;alias&#x60; è un nome amichevole per il sensore.
+ * Il campo &#x60;pending&#x60; è un campo opzionale che indica se il cambio di stato del sensore è in corso o meno.
+ * Il campo &#x60;geoPos&#x60; rappresenta la posizione geografica del sensore.
+ * Il campo &#x60;actionRange&#x60; indica il raggio entro cui il sensore opera.
  */
 export interface SensorStatus {
   /**
-   * The current status of the sensor.
-   * Can be either &#x27;On&#x27; or &#x27;Off&#x27;.
+   * Lo stato corrente del sensore.
+   * Può essere &#x27;On&#x27; (attivato) o &#x27;Off&#x27; (disattivato).
    */
   status: &quot;On&quot; | &quot;Off&quot;;
   /**
-   * The unique identifier of the sensor.
+   * L&#x27;identificatore univoco del sensore.
    */
   id: string;
   /**
-   * The friendly name of the sensor.
+   * Alias del sensore.
    */
   alias: string;
   /**
-   * (Optional) Denotes whether a sensor&#x27;s status change is in progress or not.
+   * (Opzionale) Indica se il cambio di stato del sensore è in corso o meno.
    */
   pending?: boolean;
   /**
-   * The geographic position of the sensor.
+   * La posizione geografica del sensore.
    */
   geoPos: string;
   /**
-   * The range within which the sensor operates.
+   * Il raggio entro cui il sensore opera.
    */
   actionRange: string;
 }
 
 /**
- * Represents the status of an area.
- * The &#x60;status&#x60; field can be &#x27;On&#x27; or &#x27;Off&#x27;.
- * The &#x60;id&#x60; field is a unique identifier for the area.
- * The &#x60;alias&#x60; field is a friendly name for the area.
+ * Rappresenta lo stato di un&#x27;area.
+ * Il campo &#x60;status&#x60; può essere &#x27;On&#x27; (attivata) o &#x27;Off&#x27; (disattivata).
+ * Il campo &#x60;id&#x60; è un identificatore univoco per l&#x27;area.
+ * Il campo &#x60;alias&#x60; è un nome amichevole per l&#x27;area.
  */
 export interface AreaStatus {
   /**
-   * The current status of the area.
-   * Can be either &#x27;On&#x27; or &#x27;Off&#x27;.
+   * Lo stato corrente dell&#x27;area.
+   * Può essere &#x27;On&#x27; (attivata) o &#x27;Off&#x27; (disattivata).
    */
   status: &quot;On&quot; | &quot;Off&quot;;
   /**
-   * The unique identifier of the area.
+   * L&#x27;identificatore univoco dell&#x27;area.
    */
   id: string;
   /**
-   * The friendly name of the area.
+   * Alias dell&#x27;area.
    */
   alias: string;
 }

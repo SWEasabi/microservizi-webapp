@@ -1,17 +1,17 @@
-// Importing Angular's common module
+// Import del modulo CommonModule
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-// Import from RxJS library
+// Import necessari da RxJS
 import { last } from "rxjs";
-// Import for the SensorStatus model
+// Import del modello SensorStatus
 import { SensorStatus } from "../../model";
 
 /**
- * Component for Sensor Button.
- * This is a presentational component which receives data as an Input and emits events as Output.
- * It's responsible for displaying a single sensor status and emits events when actions are taken on it.
- * This component uses the OnPush change detection strategy.
+ * Componente per il Pulsante del Sensore.
+ * Questo è un componente di presentazione che riceve dati come input ed emette eventi come output.
+ * È responsabile della visualizzazione dello stato di un singolo sensore ed emette eventi quando vengono intraprese azioni su di esso.
+ * Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.
  */
 @Component({
   selector: 'app-sensor-button',
@@ -23,25 +23,25 @@ import { SensorStatus } from "../../model";
 })
 export class SensorButtonComponent {
   /**
-   * Property to enable dynamic properties addition to the component
+   * Proprietà per consentire l'aggiunta di proprietà dinamiche al componente.
    */
   [x: string]: any;
 
   /**
-   * Input data of type SensorStatus.
-   * This is passed in from a parent component and represents the status of a particular sensor.
+   * Dati in ingresso di tipo SensorStatus.
+   * Questi dati vengono passati da un componente genitore e rappresentano lo stato di un sensore specifico.
    */
   @Input() data: SensorStatus;
 
   /**
-   * Output EventEmitter to be emitted when sensor status is toggled.
-   * It emits an event whenever a user interacts with this component.
+   * Output EventEmitter per essere emesso quando lo stato del sensore viene modificato.
+   * Emette un evento ogni volta che l'utente interagisce con questo componente.
    */
   @Output() toggleSensor = new EventEmitter<void>();
 
   /**
-   * An RxJS operator that emits only the last value (complete) of an observable sequence.
-   * It's protected and can be used within the component and its descendants.
+   * Un operatore RxJS che emette solo l'ultimo valore (completato) di una sequenza osservabile.
+   * È protetto e può essere utilizzato all'interno del componente e dei suoi discendenti.
    */
   protected readonly last = last;
 }

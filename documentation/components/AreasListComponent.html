@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -77,10 +77,10 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>A list component for Areas.
-This component is responsible for managing events and passing data to the presentational component.
-It interfaces with the AppService to load data.
-This component uses the OnPush change detection strategy.</p>
+        <p>Componente lista per le Aree.
+Questo componente si occupa di gestire gli eventi e passare i dati al componente presentazionale.
+Interagisce con l&#39;AppService per caricare i dati delle aree.
+Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.</p>
 
     </p>
 
@@ -243,8 +243,8 @@ This component uses the OnPush change detection strategy.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Implementation of the OnInit lifecycle hook
-Here, the loadDataAreas method of the service is called.</p>
+                    <div class="io-description"><p>Implementazione dell&#39;hook del ciclo di vita OnInit.
+Qui viene chiamato il metodo loadDataAreas del servizio.</p>
 </div>
 
                     <div class="io-description">
@@ -285,8 +285,8 @@ Here, the loadDataAreas method of the service is called.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An observable of the areas array.
-This is used to keep track of the list of areas in real time.</p>
+                    <div class="io-description"><p>Un osservabile dell&#39;array delle aree.
+Viene utilizzato per tenere traccia della lista delle aree in tempo reale.</p>
 </div>
                 </td>
             </tr>
@@ -317,8 +317,8 @@ This is used to keep track of the list of areas in real time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An observable of the loading status.
-This is used to manage the loading state of the component.</p>
+                    <div class="io-description"><p>Un osservabile dello stato di caricamento.
+Viene utilizzato per gestire lo stato di caricamento del componente.</p>
 </div>
                 </td>
             </tr>
@@ -338,7 +338,7 @@ This is used to manage the loading state of the component.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject (AppService)</code>
+                        <i>Default value : </i><code>inject(AppService)</code>
                     </td>
                 </tr>
                     <tr>
@@ -349,8 +349,8 @@ This is used to manage the loading state of the component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the AppService.
-This is used to interact with the backend.</p>
+                    <div class="io-description"><p>Istanza di AppService.
+Viene utilizzata per interagire con il backend.</p>
 </div>
                 </td>
             </tr>
@@ -387,8 +387,8 @@ This is used to interact with the backend.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Function to track areas by id.
-This helps Angular to optimize the rendering of lists.</p>
+                    <div class="io-description"><p>Funzione per tracciare le aree per id.
+Questo aiuta Angular ad ottimizzare il rendering delle liste.</p>
 </div>
                 </td>
             </tr>
@@ -402,22 +402,22 @@ This helps Angular to optimize the rendering of lists.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } from &quot;@angular/core&quot;;
-// Import for the AreaButtonComponent
+// Import per l&#x27;AreaButtonComponent
 import { AreaButtonComponent } from &quot;../../components/area-button/area-button.component&quot;;
-// Import for the AreaStatus model
+// Import per il modello AreaStatus
 import { AreaStatus } from &quot;../../model&quot;;
-// Import for the AppService
+// Import per l&#x27;AppService
 import { AppService } from &quot;../../services/app.service&quot;;
 
 /**
- * A list component for Areas.
- * This component is responsible for managing events and passing data to the presentational component.
- * It interfaces with the AppService to load data.
- * This component uses the OnPush change detection strategy.
+ * Componente lista per le Aree.
+ * Questo componente si occupa di gestire gli eventi e passare i dati al componente presentazionale.
+ * Interagisce con l&#x27;AppService per caricare i dati delle aree.
+ * Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.
  */
-@Component ({
+@Component({
   selector: &quot;app-areas-list&quot;,
   standalone: true,
   imports: [CommonModule, AreaButtonComponent],
@@ -427,39 +427,39 @@ import { AppService } from &quot;../../services/app.service&quot;;
 })
 export class AreasListComponent implements OnInit {
   /**
-   * Implementation of the OnInit lifecycle hook
-   * Here, the loadDataAreas method of the service is called.
+   * Implementazione dell&#x27;hook del ciclo di vita OnInit.
+   * Qui viene chiamato il metodo loadDataAreas del servizio.
    */
-  ngOnInit () {
+  ngOnInit() {
     this.service.loadDataAreas();
   }
-  
-  /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
-   */
-  service &#x3D; inject (AppService);
 
   /**
-   * An observable of the areas array.
-   * This is used to keep track of the list of areas in real time.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
+   */
+  service &#x3D; inject(AppService);
+
+  /**
+   * Un osservabile dell&#x27;array delle aree.
+   * Viene utilizzato per tenere traccia della lista delle aree in tempo reale.
    */
   areas$ &#x3D; this.service.areas$;
 
   /**
-   * An observable of the loading status.
-   * This is used to manage the loading state of the component.
+   * Un osservabile dello stato di caricamento.
+   * Viene utilizzato per gestire lo stato di caricamento del componente.
    */
   loading$ &#x3D; this.service.loading$;
 
   /**
-   * Function to track areas by id.
-   * This helps Angular to optimize the rendering of lists.
+   * Funzione per tracciare le aree per id.
+   * Questo aiuta Angular ad ottimizzare il rendering delle liste.
    */
   trackByAreaId: TrackByFunction&lt;AreaStatus&gt; &#x3D; (index: number, area: AreaStatus) &#x3D;&gt; area.id;
-  
-  // As of now, there&#x27;s no event management in this component.
-  // Any future events and their handlers should be documented here.
+
+  // Al momento, in questo componente non ci sono gestori di eventi.
+  // Eventuali futuri eventi e i relativi gestori dovrebbero essere documentati qui.
 }
 </code></pre>
     </div>

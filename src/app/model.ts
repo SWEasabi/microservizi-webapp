@@ -1,85 +1,85 @@
 /**
- * Represents the status of a lamp.
- * The `status` field can be 'On' or 'Off'.
- * The `id` field is a unique identifier for the lamp.
- * The `alias` field is a friendly name for the lamp.
- * The `pending` field is an optional field that denotes whether a lamp's status change is in progress or not.
+ * Rappresenta lo stato di una lampada.
+ * Il campo `status` può essere 'On' (acceso) o 'Off' (spento).
+ * Il campo `id` è un identificatore univoco per la lampada.
+ * Il campo `alias` è un nome amichevole per la lampada.
+ * Il campo `pending` è un campo opzionale che indica se il cambio di stato della lampada è in corso o meno.
  */
 export interface LampStatus {
   /**
-   * The current status of the lamp.
-   * Can be either 'On' or 'Off'.
+   * Lo stato corrente della lampada.
+   * Può essere 'On' (acceso) o 'Off' (spento).
    */
   status: "On" | "Off";
   /**
-   * The unique identifier of the lamp.
+   * L'identificatore univoco della lampada.
    */
   id: string;
   /**
-   * The friendly name of the lamp.
+   * Alias della lampada.
    */
   alias: string;
   /**
-   * (Optional) Denotes whether a lamp's status change is in progress or not.
+   * (Opzionale) Indica se il cambio di stato della lampada è in corso o meno.
    */
   pending?: boolean;
 }
 
 /**
- * Represents the status of a sensor.
- * The `status` field can be 'On' or 'Off'.
- * The `id` field is a unique identifier for the sensor.
- * The `alias` field is a friendly name for the sensor.
- * The `pending` field is an optional field that denotes whether a sensor's status change is in progress or not.
- * The `geoPos` field represents the geographic position of the sensor.
- * The `actionRange` field indicates the range within which the sensor operates.
+ * Rappresenta lo stato di un sensore.
+ * Il campo `status` può essere 'On' (attivato) o 'Off' (disattivato).
+ * Il campo `id` è un identificatore univoco per il sensore.
+ * Il campo `alias` è un nome amichevole per il sensore.
+ * Il campo `pending` è un campo opzionale che indica se il cambio di stato del sensore è in corso o meno.
+ * Il campo `geoPos` rappresenta la posizione geografica del sensore.
+ * Il campo `actionRange` indica il raggio entro cui il sensore opera.
  */
 export interface SensorStatus {
   /**
-   * The current status of the sensor.
-   * Can be either 'On' or 'Off'.
+   * Lo stato corrente del sensore.
+   * Può essere 'On' (attivato) o 'Off' (disattivato).
    */
   status: "On" | "Off";
   /**
-   * The unique identifier of the sensor.
+   * L'identificatore univoco del sensore.
    */
   id: string;
   /**
-   * The friendly name of the sensor.
+   * Alias del sensore.
    */
   alias: string;
   /**
-   * (Optional) Denotes whether a sensor's status change is in progress or not.
+   * (Opzionale) Indica se il cambio di stato del sensore è in corso o meno.
    */
   pending?: boolean;
   /**
-   * The geographic position of the sensor.
+   * La posizione geografica del sensore.
    */
   geoPos: string;
   /**
-   * The range within which the sensor operates.
+   * Il raggio entro cui il sensore opera.
    */
   actionRange: string;
 }
 
 /**
- * Represents the status of an area.
- * The `status` field can be 'On' or 'Off'.
- * The `id` field is a unique identifier for the area.
- * The `alias` field is a friendly name for the area.
+ * Rappresenta lo stato di un'area.
+ * Il campo `status` può essere 'On' (attivata) o 'Off' (disattivata).
+ * Il campo `id` è un identificatore univoco per l'area.
+ * Il campo `alias` è un nome amichevole per l'area.
  */
 export interface AreaStatus {
   /**
-   * The current status of the area.
-   * Can be either 'On' or 'Off'.
+   * Lo stato corrente dell'area.
+   * Può essere 'On' (attivata) o 'Off' (disattivata).
    */
   status: "On" | "Off";
   /**
-   * The unique identifier of the area.
+   * L'identificatore univoco dell'area.
    */
   id: string;
   /**
-   * The friendly name of the area.
+   * Alias dell'area.
    */
   alias: string;
 }

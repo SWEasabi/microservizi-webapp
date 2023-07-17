@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -77,9 +77,9 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Component for PrivateArea.
-This component represents a private area of the application accessible to authenticated users.
-It interacts with the AppService to manage the loading state of the application.</p>
+        <p>Componente per l&#39;Area Privata.
+Questo componente rappresenta un&#39;area privata dell&#39;applicazione accessibile agli utenti autenticati.
+Interagisce con l&#39;AppService per gestire lo stato di caricamento dell&#39;applicazione.</p>
 
     </p>
 
@@ -200,7 +200,7 @@ It interacts with the AppService to manage the loading state of the application.
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>inject (AppService)</code>
+                        <i>Default value : </i><code>inject(AppService)</code>
                     </td>
                 </tr>
                     <tr>
@@ -211,8 +211,8 @@ It interacts with the AppService to manage the loading state of the application.
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Instance of the AppService.
-This is used to interact with the backend.</p>
+                    <div class="io-description"><p>Istanza di AppService.
+Viene utilizzata per interagire con il backend.</p>
 </div>
                 </td>
             </tr>
@@ -243,8 +243,8 @@ This is used to interact with the backend.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An observable of the loading status.
-This is used to manage the loading state of the component.</p>
+                    <div class="io-description"><p>Un osservabile dello stato di caricamento.
+Viene utilizzato per gestire lo stato di caricamento del componente.</p>
 </div>
                 </td>
             </tr>
@@ -258,19 +258,19 @@ This is used to manage the loading state of the component.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject } from &quot;@angular/core&quot;;
-// Imports for the router directives
+// Import per le direttive del router
 import { RouterLink, RouterLinkActive, RouterOutlet } from &quot;@angular/router&quot;;
-// Import for the AppService
+// Import per l&#x27;AppService
 import { AppService } from &quot;../../services/app.service&quot;;
 
 /**
- * Component for PrivateArea.
- * This component represents a private area of the application accessible to authenticated users.
- * It interacts with the AppService to manage the loading state of the application.
+ * Componente per l&#x27;Area Privata.
+ * Questo componente rappresenta un&#x27;area privata dell&#x27;applicazione accessibile agli utenti autenticati.
+ * Interagisce con l&#x27;AppService per gestire lo stato di caricamento dell&#x27;applicazione.
  */
-@Component ({
+@Component({
   selector: &quot;app-private-area&quot;,
   templateUrl: &quot;./private-area.component.html&quot;,
   styleUrls: [&quot;./private-area.component.css&quot;],
@@ -279,17 +279,16 @@ import { AppService } from &quot;../../services/app.service&quot;;
 })
 export class PrivateAreaComponent {
   /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
    */
-  appService &#x3D; inject (AppService);
+  appService &#x3D; inject(AppService);
 
   /**
-   * An observable of the loading status.
-   * This is used to manage the loading state of the component.
+   * Un osservabile dello stato di caricamento.
+   * Viene utilizzato per gestire lo stato di caricamento del componente.
    */
   loading$ &#x3D; this.appService.loading$;
-  
 }
 </code></pre>
     </div>

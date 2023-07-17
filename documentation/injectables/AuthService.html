@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -72,8 +72,8 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>The <code>AuthService</code> class provides authentication-related functionalities.</p>
-<p>The <code>AuthService</code> class should be injected into the desired components or services.</p>
+                <p>La classe <code>AuthService</code> fornisce funzionalità relative all&#39;autenticazione.</p>
+<p>la classe <code>AuthService</code> può essere iniettata in un componente o in un servizio.</p>
 
             </p>
 
@@ -186,7 +186,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Retrieves the authentication token.</p>
+                    <div class="io-description"><p>Recupera il token di autenticazione.</p>
 </div>
 
                     <div>
@@ -196,7 +196,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>The authentication token stored in the local storage.</p>
+                        <p>il token di autenticazione dal localstorage.</p>
 
                     </div>
                 </td>
@@ -231,7 +231,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Checks if the user is authenticated.</p>
+                    <div class="io-description"><p>Controlla se l&#39;utente è autenticato.</p>
 </div>
 
                     <div>
@@ -241,7 +241,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>A boolean value indicating whether the user is authenticated.</p>
+                        <p>un valore booleano che indica se l&#39;utente è autenticato.</p>
 
                     </div>
                 </td>
@@ -276,7 +276,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Checks if the user is logged in.</p>
+                    <div class="io-description"><p>Controlla se l&#39;utente è loggato.</p>
 </div>
 
                     <div>
@@ -286,7 +286,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>A boolean value indicating whether the user is logged in.</p>
+                        <p>Un valore booleano che indica se l&#39;utente è loggato.</p>
 
                     </div>
                 </td>
@@ -313,15 +313,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/app/services/auth.service.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/services/auth.service.ts:101</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Logs in the user with the provided username and password.</p>
+                    <div class="io-description"><p>Logga l&#39;utente utilizzando le credenziali fornite.</p>
 </div>
 
                     <div class="io-description">
@@ -350,7 +350,7 @@
 
                                     <td>
                                         <ul>
-<li>The username of the user.</li>
+<li>L&#39;username dell&#39;utente.</li>
 </ul>
 
                                     </td>
@@ -368,7 +368,7 @@
 
                                     <td>
                                         <ul>
-<li>The password of the user.</li>
+<li>la password dell&#39;utente.</li>
 </ul>
 
                                     </td>
@@ -383,7 +383,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>An Observable<boolean> representing the login result.</p>
+                        <p>Un Observable<boolean> che indica se il login è andato a buon fine.</p>
 
                     </div>
                 </td>
@@ -410,16 +410,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/services/auth.service.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/app/services/auth.service.ts:89</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Logs out the user by removing the token from the local storage and reloading the page.</p>
-<p>After logging out, the user will be redirected to the authentication page or any other desired page.</p>
+                    <div class="io-description"><p>Disconnette l&#39;utente rimuovendo il token dal local storage e ricaricando la pagina.</p>
+<p>Dopo il logout, l&#39;utente verrà reindirizzato alla pagina di autenticazione o a qualsiasi altra pagina desiderata.</p>
 </div>
 
                     <div class="io-description">
@@ -476,75 +476,76 @@ import { Observable, of } from &quot;rxjs&quot;;
  *
  * @description
  *
- * The &#x60;AuthService&#x60; class provides authentication-related functionalities.
+ * La classe &#x60;AuthService&#x60; fornisce funzionalità relative all&#x27;autenticazione.
  *
  * @usageNotes
  *
- * The &#x60;AuthService&#x60; class should be injected into the desired components or services.
+ * la classe &#x60;AuthService&#x60; può essere iniettata in un componente o in un servizio.
  */
 @Injectable({
   providedIn: &quot;root&quot;
 })
 export class AuthService {
-  
+
   private loggedIn &#x3D; false;
-  
+
   constructor() {
     if (this.isAuthenticated()) {
       this.loggedIn &#x3D; true;
     }
   }
-  
+
   /**
-   * Checks if the user is logged in.
+   * Controlla se l&#x27;utente è loggato.
    *
-   * @returns A boolean value indicating whether the user is logged in.
+   * @returns Un valore booleano che indica se l&#x27;utente è loggato.
    */
   isLoggedIn(): boolean {
     return this.loggedIn;
   }
-  
+
   /**
-   * Checks if the user is authenticated.
+   * Controlla se l&#x27;utente è autenticato.
    *
-   * @returns A boolean value indicating whether the user is authenticated.
+   * @returns un valore booleano che indica se l&#x27;utente è autenticato.
    */
   isAuthenticated(): boolean {
     return !!localStorage.getItem(&quot;token&quot;);
   }
-  
+
   /**
-   * Retrieves the authentication token.
+   * Recupera il token di autenticazione.
    *
-   * @returns The authentication token stored in the local storage.
+   * @returns il token di autenticazione dal localstorage.
    */
   getToken(): string {
     return localStorage.getItem(&quot;token&quot;);
   }
-  
+
   /**
-   * Logs out the user by removing the token from the local storage and reloading the page.
-   * 
-   * After logging out, the user will be redirected to the authentication page or any other desired page.
-   */
+   * Disconnette l&#x27;utente rimuovendo il token dal local storage e ricaricando la pagina.
+   *
+   * Dopo il logout, l&#x27;utente verrà reindirizzato alla pagina di autenticazione o a qualsiasi altra pagina desiderata.   */
   logout(): void {
     localStorage.removeItem(&quot;token&quot;);
     window.location.reload();
   }
-  
+
   /**
-   * Logs in the user with the provided username and password.
+   * Logga l&#x27;utente utilizzando le credenziali fornite.
    *
-   * @param username - The username of the user.
-   * @param password - The password of the user.
-   * @returns An Observable&lt;boolean&gt; representing the login result.
+   * @param username - L&#x27;username dell&#x27;utente.
+   * @param password - la password dell&#x27;utente.
+   * @returns Un Observable&lt;boolean&gt; che indica se il login è andato a buon fine.
    */
   login(username: string, password: string): Observable&lt;boolean&gt; {
     localStorage.setItem(&quot;token&quot;, &quot;blablabla&quot;);
     this.loggedIn &#x3D; true;
     return of(true);
   }
-}</code></pre>
+}
+
+</code></pre>
     </div>
 
 </div>

@@ -1,20 +1,20 @@
-// Angular's common module
+// Modulo comune di Angular
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject } from "@angular/core";
-// Imports for the form controls
+// Import per i controlli del form
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-// Import for the Router
+// Import per il Router
 import { Router, RouterModule } from "@angular/router";
-// Import for the AppService
+// Import per l'AppService
 import { AppService } from "../../services/app.service";
 
 /**
- * Component for Lamp.
- * This component contains a form for adding a new lamp.
- * It interacts with the AppService to add new lamps and navigate back to the root route upon successful addition.
+ * Componente per la Lampada.
+ * Questo componente contiene un form per aggiungere una nuova lampada.
+ * Interagisce con l'AppService per aggiungere nuove lampade e per navigare alla route principale in caso di aggiunta avvenuta con successo.
  */
-@Component ({
+@Component({
   selector: "app-lamp",
   templateUrl: "./lamp.component.html",
   styleUrls: ["./lamp.component.css"],
@@ -23,48 +23,48 @@ import { AppService } from "../../services/app.service";
 })
 export class LampComponent {
   /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
    */
-  appService = inject (AppService);
+  appService = inject(AppService);
 
   /**
-   * Instance of the Router.
-   * This is used to navigate among routes.
+   * Istanza del Router.
+   * Viene utilizzata per navigare tra le route.
    */
-  router = inject (Router);
+  router = inject(Router);
 
   /**
-   * Instance of the FormBuilder.
-   * This is used to create a reactive form for adding new lamps.
+   * Istanza del FormBuilder.
+   * Viene utilizzata per creare un form reattivo per aggiungere nuove lampade.
    */
-  formBuilder = inject (FormBuilder);
+  formBuilder = inject(FormBuilder);
 
   /**
-   * Instance of the FormGroup.
-   * This is used to create and manage the form controls.
+   * Istanza del FormGroup.
+   * Viene utilizzata per creare e gestire i controlli del form.
    */
-  formData = this.formBuilder.group ({
-    alias: this.formBuilder.control ("", [Validators.required])
+  formData = this.formBuilder.group({
+    alias: this.formBuilder.control("", [Validators.required])
   });
 
   /**
-   * An observable of the error status.
-   * This is used to manage the error state of the component.
+   * Un osservabile dello stato di errore.
+   * Viene utilizzato per gestire lo stato di errore del componente.
    */
   error$ = this.appService.error$;
-  
+
   /**
-   * Function to add a new lamp.
-   * It retrieves the alias value from the form and calls the addLamp$ method of the AppService.
-   * Upon successful addition, it navigates back to the root route.
+   * Funzione per aggiungere una nuova lampada.
+   * Recupera il valore dell'alias dal form e chiama il metodo addLamp$ dell'AppService.
+   * In caso di aggiunta avvenuta con successo, viene navigato alla route principale.
    */
-  addLamp () {
-    this.appService.addLamp$ (this.formData.get ("alias").value)
-    .subscribe ((completed) => {
-      if (completed) {
-        this.router.navigate (["/"]);
-      }
-    });
+  addLamp() {
+    this.appService.addLamp$(this.formData.get("alias").value)
+      .subscribe((completed) => {
+        if (completed) {
+          this.router.navigate(["/"]);
+        }
+      });
   }
 }

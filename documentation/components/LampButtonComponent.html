@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -77,10 +77,10 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Component for Lamp Button.
-This is a presentational component which receives data as an Input and emits events as Output.
-It&#39;s responsible for displaying a single lamp status and emits events when actions are taken on it.
-This component uses the OnPush change detection strategy.</p>
+        <p>Componente per Lamp Button.
+Questo è un componente di presentazione che riceve dati come input ed emette eventi come output.
+È responsabile della visualizzazione dello stato di una singola lampada ed emette eventi quando vengono intraprese azioni su di essa.
+Questo componente utilizza la strategia di rilevamento delle modifiche OnPush.</p>
 
     </p>
 
@@ -229,8 +229,8 @@ This component uses the OnPush change detection strategy.</p>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Input data of type LampStatus.
-This is passed in from a parent component and represents the status of a particular lamp.</p>
+                        <div class="io-description"><p>Input data di tipo LampStatus.
+Questo è passato da un componente genitore e rappresenta lo stato di una particolare lampada.</p>
 </div>
                     </td>
                 </tr>
@@ -260,8 +260,8 @@ This is passed in from a parent component and represents the status of a particu
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Output EventEmitter to be emitted when lamp status is toggled.
-It emits an event whenever a user interacts with this component.</p>
+                        <div class="io-description"><p>Output EventEmitter da emettere quando lo stato della lampada viene attivata.
+Emette un evento ogni volta che un utente interagisce con la lampada.</p>
 </div>
                     </td>
                 </tr>
@@ -302,8 +302,8 @@ It emits an event whenever a user interacts with this component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An RxJS operator that emits only the last value (complete) of an observable sequence.
-It&#39;s protected and can be used within the component and its descendants.</p>
+                    <div class="io-description"><p>Un operatore RxJS che emette solo l&#39;ultimo valore (completo) di una sequenza osservabile.
+E&#39; protetto e può essere utilizzato all&#39;interno del componente e dei suoi discendenti.</p>
 </div>
                 </td>
             </tr>
@@ -317,18 +317,18 @@ It&#39;s protected and can be used within the component and its descendants.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
-// Necessary imports from Angular core
+// Import necessary da Angular core
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from &quot;@angular/core&quot;;
-// Import from RxJS library
+// Importa last da RxJS
 import { last } from &quot;rxjs&quot;;
-// Import for the LampStatus model
+// Importa da modello LampStatus
 import { LampStatus } from &quot;../../model&quot;;
 
 /**
- * Component for Lamp Button.
- * This is a presentational component which receives data as an Input and emits events as Output.
- * It&#x27;s responsible for displaying a single lamp status and emits events when actions are taken on it.
- * This component uses the OnPush change detection strategy.
+ * Componente per Lamp Button.
+ * Questo è un componente di presentazione che riceve dati come input ed emette eventi come output.
+ * È responsabile della visualizzazione dello stato di una singola lampada ed emette eventi quando vengono intraprese azioni su di essa.
+ * Questo componente utilizza la strategia di rilevamento delle modifiche OnPush.
  */
 @Component ({
   selector: &quot;app-lamp-button&quot;,
@@ -341,20 +341,20 @@ import { LampStatus } from &quot;../../model&quot;;
 
 export class LampButtonComponent {
   /**
-   * Input data of type LampStatus.
-   * This is passed in from a parent component and represents the status of a particular lamp.
+   * Input data di tipo LampStatus.
+   * Questo è passato da un componente genitore e rappresenta lo stato di una particolare lampada.
    */
   @Input () data: LampStatus;
-  
+
   /**
-   * Output EventEmitter to be emitted when lamp status is toggled.
-   * It emits an event whenever a user interacts with this component.
+   * Output EventEmitter da emettere quando lo stato della lampada viene attivata.
+   * Emette un evento ogni volta che un utente interagisce con la lampada.
    */
   @Output () toggleLamp &#x3D; new EventEmitter&lt;void&gt; ();
 
   /**
-   * An RxJS operator that emits only the last value (complete) of an observable sequence.
-   * It&#x27;s protected and can be used within the component and its descendants.
+   * Un operatore RxJS che emette solo l&#x27;ultimo valore (completo) di una sequenza osservabile.
+   * E&#x27; protetto e può essere utilizzato all&#x27;interno del componente e dei suoi discendenti.
    */
   protected readonly last &#x3D; last;
 }

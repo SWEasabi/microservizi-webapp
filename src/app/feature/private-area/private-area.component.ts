@@ -1,18 +1,18 @@
-// Angular's common module
+// Modulo comune di Angular
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject } from "@angular/core";
-// Imports for the router directives
+// Import per le direttive del router
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
-// Import for the AppService
+// Import per l'AppService
 import { AppService } from "../../services/app.service";
 
 /**
- * Component for PrivateArea.
- * This component represents a private area of the application accessible to authenticated users.
- * It interacts with the AppService to manage the loading state of the application.
+ * Componente per l'Area Privata.
+ * Questo componente rappresenta un'area privata dell'applicazione accessibile agli utenti autenticati.
+ * Interagisce con l'AppService per gestire lo stato di caricamento dell'applicazione.
  */
-@Component ({
+@Component({
   selector: "app-private-area",
   templateUrl: "./private-area.component.html",
   styleUrls: ["./private-area.component.css"],
@@ -21,15 +21,14 @@ import { AppService } from "../../services/app.service";
 })
 export class PrivateAreaComponent {
   /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
    */
-  appService = inject (AppService);
+  appService = inject(AppService);
 
   /**
-   * An observable of the loading status.
-   * This is used to manage the loading state of the component.
+   * Un osservabile dello stato di caricamento.
+   * Viene utilizzato per gestire lo stato di caricamento del componente.
    */
   loading$ = this.appService.loading$;
-  
 }

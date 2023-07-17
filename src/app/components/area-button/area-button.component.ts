@@ -1,17 +1,16 @@
-// Angular's common module
+// Integraizione di CommonModule
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessary da Angular core
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-// Import from RxJS library
+// Import da RxJS
 import { last } from "rxjs";
-// Import for the AreaStatus model
+// Import da modello AreaStatus
 import { AreaStatus } from "../../model";
 
 /**
- * Component for Area Button.
- * This is a presentational component which receives data as an Input and emits events as Output.
- * It's responsible for displaying a single area status and emits events when actions are taken on it.
- * This component uses the OnPush change detection strategy.
+ * Componente presentazionale che riceve dati come Input ed emette eventi come Output.
+ * È responsabile della visualizzazione di un singolo stato dell'area e emette eventi quando vengono eseguite azioni su di esso.
+ * Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.
  */
 @Component ({
   selector: "app-area-button",
@@ -24,14 +23,14 @@ import { AreaStatus } from "../../model";
 
 export class AreaButtonComponent {
   /**
-   * Input data of type AreaStatus.
-   * This is passed in from a parent component and represents the status of a particular area.
+   * Dati in ingresso al componente.
+   * Questo è passato da un componente genitore e rappresenta lo stato di una particolare area.
    */
   @Input () data: AreaStatus;
 
   /**
-   * An RxJS operator that emits only the last value (complete) of an observable sequence.
-   * It's protected and can be used within the component and its descendants.
+   * un operatore RxJS che emette solo l'ultimo valore (completo) di una sequenza osservabile.
+   * È protetto e può essere utilizzato all'interno del componente e dei suoi discendenti.
    */
   protected readonly last = last;
 }

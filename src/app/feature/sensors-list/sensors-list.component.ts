@@ -1,18 +1,19 @@
 /**
  * @module SensorsListComponent
  * @description
- * 
- * The `SensorsListComponent` is a container component that interacts with the `AppService` to manage sensor data and events.
- * It is responsible for loading sensor data, toggling sensor status, and passing data to the presentational component.
- * 
+ *
+ * Il componente `SensorsListComponent` è un componente contenitore che interagisce con l'`AppService`
+ * per gestire i dati e gli eventi dei sensori.
+ * È responsabile del caricamento dei dati dei sensori, del cambio dello stato dei sensori e del passaggio dei dati al componente presentazionale.
+ *
  * @usage
- * 
+ *
  * ```html
  * <app-sensors-list></app-sensors-list>
  * ```
- * 
+ *
  * @selector `app-sensors-list`
- * 
+ *
  * @export
  * @class SensorsListComponent
  * @implements {OnInit}
@@ -35,7 +36,7 @@ import { SensorButtonComponent } from "src/app/components/sensor-button/sensor-b
 export class SensorsListComponent implements OnInit {
 
   /**
-   * Initializes the component and loads sensor data.
+   * Inizializza il componente e carica i dati dei sensori.
    *
    * @memberof SensorsListComponent
    */
@@ -44,7 +45,7 @@ export class SensorsListComponent implements OnInit {
   }
 
   /**
-   * Injects the `AppService` to communicate with the backend and manage sensor data.
+   * Inietta l'`AppService` per comunicare con il backend e gestire i dati dei sensori.
    *
    * @type {AppService}
    * @memberof SensorsListComponent
@@ -52,7 +53,7 @@ export class SensorsListComponent implements OnInit {
   service = inject(AppService);
 
   /**
-   * Represents the sensor data as an observable stream.
+   * Rappresenta i dati dei sensori come un flusso di osservabili.
    *
    * @type {*}
    * @memberof SensorsListComponent
@@ -60,7 +61,7 @@ export class SensorsListComponent implements OnInit {
   sensors$ = this.service.sensors$;
 
   /**
-   * Represents the loading state as an observable stream.
+   * Rappresenta lo stato di caricamento come un flusso di osservabili.
    *
    * @type {*}
    * @memberof SensorsListComponent
@@ -68,17 +69,17 @@ export class SensorsListComponent implements OnInit {
   loading$ = this.service.loading$;
 
   /**
-   * Defines a track by function for the ngFor directive to improve rendering performance.
-   * Uses the sensor's ID as the unique identifier.
+   * Definisce una funzione di tracciamento (track by) per la direttiva ngFor per migliorare le prestazioni di rendering.
+   * Utilizza l'ID del sensore come identificatore univoco.
    *
    * @memberof SensorsListComponent
    */
   trackBySensorId: TrackByFunction<SensorStatus> = (index: number, sensor: SensorStatus) => sensor.id;
 
   /**
-   * Toggles the status of a sensor by invoking the `toggleSensor` method of the `AppService`.
+   * Cambia lo stato di un sensore invocando il metodo `toggleSensor` dell'`AppService`.
    *
-   * @param {SensorStatus} sensor The sensor object to toggle.
+   * @param {SensorStatus} sensor L'oggetto del sensore da attivare/disattivare.
    * @memberof SensorsListComponent
    */
   toggleSensor(sensor: SensorStatus) {

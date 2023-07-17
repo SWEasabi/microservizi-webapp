@@ -1,22 +1,22 @@
-// Angular's common module
+// Modulo comune di Angular
 import { CommonModule } from "@angular/common";
-// Necessary for API calls
+// Import necessario per le chiamate API
 import { HttpClientModule } from "@angular/common/http";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject, OnInit } from "@angular/core";
-// Imports for the form controls
+// Import per i controlli del form
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-// Import for the Router
+// Import per il Router
 import { Router } from "@angular/router";
-// Import for the AuthService
+// Import per l'AuthService
 import { AuthService } from "../../services/auth.service";
 
 /**
- * Component for Authentication.
- * This component provides a login form.
- * It interacts with the AuthService to authenticate a user and navigate to the private area upon successful login.
+ * Componente per l'Autenticazione.
+ * Questo componente fornisce un form di login.
+ * Interagisce con l'AuthService per autenticare un utente e navigare nell'area privata in caso di login avvenuto con successo.
  */
-@Component ({
+@Component({
   selector: "app-authentication",
   templateUrl: "./authentication.component.html",
   styleUrls: ["./authentication.component.css"],
@@ -24,63 +24,63 @@ import { AuthService } from "../../services/auth.service";
   imports: [HttpClientModule, CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class AuthenticationComponent implements OnInit {
-  
-  /**
-   * Instance of the AuthService.
-   * This is used to authenticate a user.
-   */
-  authService = inject (AuthService);
 
   /**
-   * Instance of the Router.
-   * This is used to navigate among routes.
+   * Istanza di AuthService.
+   * Viene utilizzata per autenticare un utente.
    */
-  router = inject (Router);
+  authService = inject(AuthService);
 
   /**
-   * Instance of the FormBuilder.
-   * This is used to create a reactive form for the login functionality.
+   * Istanza del Router.
+   * Viene utilizzata per navigare tra le route.
    */
-  formBuilder = inject (FormBuilder);
+  router = inject(Router);
 
   /**
-   * Instance of the FormGroup.
-   * This is used to create and manage the form controls.
+   * Istanza del FormBuilder.
+   * Viene utilizzata per creare un form reattivo per la funzionalità di login.
    */
-  formData = this.formBuilder.group ({
-    username: this.formBuilder.control ("", [Validators.required]),
-    password: this.formBuilder.control ("", [Validators.required])
+  formBuilder = inject(FormBuilder);
+
+  /**
+   * Istanza del FormGroup.
+   * Viene utilizzata per creare e gestire i controlli del form.
+   */
+  formData = this.formBuilder.group({
+    username: this.formBuilder.control("", [Validators.required]),
+    password: this.formBuilder.control("", [Validators.required])
   });
 
   /**
-   * A variable to store error message.
-   * This is used to display error messages to the user.
+   * Una variabile per memorizzare il messaggio di errore.
+   * Viene utilizzata per mostrare i messaggi di errore all'utente.
    */
   errorMessage: string;
 
   /**
-   * Angular's lifecycle hook.
-   * It removes the token from local storage whenever this component is initialized.
+   * Hook del ciclo di vita di Angular.
+   * Rimuove il token dal local storage ogni volta che questo componente viene inizializzato.
    */
-  ngOnInit () {
-    localStorage.removeItem ("token");
+  ngOnInit() {
+    localStorage.removeItem("token");
   }
 
   /**
-   * Function to login a user.
-   * It retrieves the form data and calls the login method of the AuthService.
-   * Upon successful login, it navigates to the private area.
-   * If login fails, it sets the errorMessage.
+   * Funzione per effettuare il login di un utente.
+   * Recupera i dati dal form e chiama il metodo login dell'AuthService.
+   * In caso di login avvenuto con successo, viene navigato nell'area privata.
+   * Se il login fallisce, viene impostato il messaggio di errore.
    */
-  login () {
+  login() {
     const credentials = this.formData.value;
-    this.authService.login (credentials.username, credentials.password)
-    .subscribe ((logged) => {
-      if (logged) {
-        this.router.navigate (["/private-area"]);
-      } else {
-        this.errorMessage = "Invalid credentials";
-      }
-    });
+    this.authService.login(credentials.username, credentials.password)
+      .subscribe((logged) => {
+        if (logged) {
+          this.router.navigate(["/private-area"]);
+        } else {
+          this.errorMessage = "Credenziali non valide";
+        }
+      });
   }
 }

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Sweasabi Project - Webapp Documentation</title>
+        <title>http documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">Sweasabi Project - Webapp Documentation</a>
+            <a href="../" class="navbar-brand">http documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -77,10 +77,10 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Component for Sensor Button.
-This is a presentational component which receives data as an Input and emits events as Output.
-It&#39;s responsible for displaying a single sensor status and emits events when actions are taken on it.
-This component uses the OnPush change detection strategy.</p>
+        <p>Componente per il Pulsante del Sensore.
+Questo è un componente di presentazione che riceve dati come input ed emette eventi come output.
+È responsabile della visualizzazione dello stato di un singolo sensore ed emette eventi quando vengono intraprese azioni su di esso.
+Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.</p>
 
     </p>
 
@@ -229,8 +229,8 @@ This component uses the OnPush change detection strategy.</p>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Input data of type SensorStatus.
-This is passed in from a parent component and represents the status of a particular sensor.</p>
+                        <div class="io-description"><p>Dati in ingresso di tipo SensorStatus.
+Questi dati vengono passati da un componente genitore e rappresentano lo stato di un sensore specifico.</p>
 </div>
                     </td>
                 </tr>
@@ -260,8 +260,8 @@ This is passed in from a parent component and represents the status of a particu
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Output EventEmitter to be emitted when sensor status is toggled.
-It emits an event whenever a user interacts with this component.</p>
+                        <div class="io-description"><p>Output EventEmitter per essere emesso quando lo stato del sensore viene modificato.
+Emette un evento ogni volta che l&#39;utente interagisce con questo componente.</p>
 </div>
                     </td>
                 </tr>
@@ -302,8 +302,8 @@ It emits an event whenever a user interacts with this component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>An RxJS operator that emits only the last value (complete) of an observable sequence.
-It&#39;s protected and can be used within the component and its descendants.</p>
+                    <div class="io-description"><p>Un operatore RxJS che emette solo l&#39;ultimo valore (completato) di una sequenza osservabile.
+È protetto e può essere utilizzato all&#39;interno del componente e dei suoi discendenti.</p>
 </div>
                 </td>
             </tr>
@@ -317,18 +317,18 @@ It&#39;s protected and can be used within the component and its descendants.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &quot;@angular/common&quot;;
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from &quot;@angular/core&quot;;
-// Import from RxJS library
+// Import necessari da RxJS
 import { last } from &quot;rxjs&quot;;
-// Import for the SensorStatus model
+// Import del modello SensorStatus
 import { SensorStatus } from &quot;../../model&quot;;
 
 /**
- * Component for Sensor Button.
- * This is a presentational component which receives data as an Input and emits events as Output.
- * It&#x27;s responsible for displaying a single sensor status and emits events when actions are taken on it.
- * This component uses the OnPush change detection strategy.
+ * Componente per il Pulsante del Sensore.
+ * Questo è un componente di presentazione che riceve dati come input ed emette eventi come output.
+ * È responsabile della visualizzazione dello stato di un singolo sensore ed emette eventi quando vengono intraprese azioni su di esso.
+ * Questo componente utilizza la strategia di rilevamento dei cambiamenti OnPush.
  */
 @Component({
   selector: &#x27;app-sensor-button&#x27;,
@@ -340,25 +340,25 @@ import { SensorStatus } from &quot;../../model&quot;;
 })
 export class SensorButtonComponent {
   /**
-   * Property to enable dynamic properties addition to the component
+   * Proprietà per consentire l&#x27;aggiunta di proprietà dinamiche al componente.
    */
   [x: string]: any;
 
   /**
-   * Input data of type SensorStatus.
-   * This is passed in from a parent component and represents the status of a particular sensor.
+   * Dati in ingresso di tipo SensorStatus.
+   * Questi dati vengono passati da un componente genitore e rappresentano lo stato di un sensore specifico.
    */
   @Input() data: SensorStatus;
 
   /**
-   * Output EventEmitter to be emitted when sensor status is toggled.
-   * It emits an event whenever a user interacts with this component.
+   * Output EventEmitter per essere emesso quando lo stato del sensore viene modificato.
+   * Emette un evento ogni volta che l&#x27;utente interagisce con questo componente.
    */
   @Output() toggleSensor &#x3D; new EventEmitter&lt;void&gt;();
 
   /**
-   * An RxJS operator that emits only the last value (complete) of an observable sequence.
-   * It&#x27;s protected and can be used within the component and its descendants.
+   * Un operatore RxJS che emette solo l&#x27;ultimo valore (completato) di una sequenza osservabile.
+   * È protetto e può essere utilizzato all&#x27;interno del componente e dei suoi discendenti.
    */
   protected readonly last &#x3D; last;
 }

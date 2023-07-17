@@ -1,18 +1,18 @@
-// Angular's common module
+// Modulo comune di Angular
 import { CommonModule } from "@angular/common";
-// Necessary imports from Angular core
+// Import necessari dal core di Angular
 import { Component, inject } from "@angular/core";
-// Imports for the form controls
+// Import per i form controls
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-// Import for the Router
+// Import per il Router
 import { Router, RouterModule } from "@angular/router";
-// Import for the AppService
+// Import per l'AppService
 import { AppService } from "../../services/app.service";
 
 /**
- * Component for Sensor.
- * This component contains a form for adding a new sensor.
- * It interacts with the AppService to add new sensors and navigate back to the root route upon successful addition.
+ * Componente per il sensore.
+ * Questo componente contiene un form per aggiungere un nuovo sensore.
+ * Interagisce con l'AppService per aggiungere nuovi sensori e navigare verso la route principale in caso di aggiunta avvenuta con successo.
  */
 @Component({
   selector: "app-sensor",
@@ -23,26 +23,26 @@ import { AppService } from "../../services/app.service";
 })
 export class SensorComponent {
   /**
-   * Instance of the AppService.
-   * This is used to interact with the backend.
+   * Istanza di AppService.
+   * Viene utilizzata per interagire con il backend.
    */
   appService = inject(AppService);
 
   /**
-   * Instance of the Router.
-   * This is used to navigate among routes.
+   * Istanza di Router.
+   * Viene utilizzata per navigare tra le route.
    */
   router = inject(Router);
 
   /**
-   * Instance of the FormBuilder.
-   * This is used to create a reactive form for adding new sensors.
+   * Istanza di FormBuilder.
+   * Viene utilizzata per creare un form reattivo per l'aggiunta di nuovi sensori.
    */
   formBuilder = inject(FormBuilder);
 
   /**
-   * Instance of the FormGroup.
-   * This is used to create and manage the form controls.
+   * Istanza di FormGroup.
+   * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
     alias: this.formBuilder.control("", [Validators.required]),
@@ -51,15 +51,15 @@ export class SensorComponent {
   });
 
   /**
-   * An observable of the error status.
-   * This is used to manage the error state of the component.
+   * Un osservabile dello stato di errore.
+   * Viene utilizzato per gestire lo stato di errore del componente.
    */
   error$ = this.appService.error$;
 
   /**
-   * Function to add a new sensor.
-   * It retrieves the alias, geoPos, and actionRange values from the form and calls the addSensor$ method of the AppService.
-   * Upon successful addition, it navigates back to the root route.
+   * Funzione per aggiungere un nuovo sensore.
+   * Recupera i valori di alias, geoPos e actionRange dal form e chiama il metodo addSensor$ dell'AppService.
+   * In caso di aggiunta avvenuta con successo, naviga verso la route principale.
    */
   addSensor() {
     const alias = this.formData.get("alias").value;

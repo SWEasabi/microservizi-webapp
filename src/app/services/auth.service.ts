@@ -3,29 +3,29 @@
  *
  * @description
  *
- * The `AuthService` module provides authentication-related functionalities.
+ * Il modulo `AuthService` fornisce funzionalità relative all'autenticazione.
  *
  * @example
  * import { AuthService } from './auth.service';
  *
- * // Create an instance of the AuthService
+ * // Crea una istanza dell' AuthService
  * const authService = new AuthService();
  *
- * // Check if the user is logged in
+ * // Controlla se l'utente è loggato
  * const loggedIn = authService.isLoggedIn();
  *
- * // Check if the user is authenticated
+ * // Controlla se l'utente è autenticato
  * const authenticated = authService.isAuthenticated();
  *
- * // Get the authentication token
+ * // Recupera il token di autenticazione
  * const token = authService.getToken();
  *
- * // Log out the user
+ * // Esegue il logout dell'utente
  * authService.logout();
  *
- * // Log in the user
+ * // Esegue il login dell'utente
  * authService.login('username', 'password').subscribe(result => {
- *   // Handle the login result
+ *   // Gestisce il risultato del login
  * });
  */
 import { Injectable } from "@angular/core";
@@ -36,68 +36,67 @@ import { Observable, of } from "rxjs";
  *
  * @description
  *
- * The `AuthService` class provides authentication-related functionalities.
+ * La classe `AuthService` fornisce funzionalità relative all'autenticazione.
  *
  * @usageNotes
  *
- * The `AuthService` class should be injected into the desired components or services.
+ * la classe `AuthService` può essere iniettata in un componente o in un servizio.
  */
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  
+
   private loggedIn = false;
-  
+
   constructor() {
     if (this.isAuthenticated()) {
       this.loggedIn = true;
     }
   }
-  
+
   /**
-   * Checks if the user is logged in.
+   * Controlla se l'utente è loggato.
    *
-   * @returns A boolean value indicating whether the user is logged in.
+   * @returns Un valore booleano che indica se l'utente è loggato.
    */
   isLoggedIn(): boolean {
     return this.loggedIn;
   }
-  
+
   /**
-   * Checks if the user is authenticated.
+   * Controlla se l'utente è autenticato.
    *
-   * @returns A boolean value indicating whether the user is authenticated.
+   * @returns un valore booleano che indica se l'utente è autenticato.
    */
   isAuthenticated(): boolean {
     return !!localStorage.getItem("token");
   }
-  
+
   /**
-   * Retrieves the authentication token.
+   * Recupera il token di autenticazione.
    *
-   * @returns The authentication token stored in the local storage.
+   * @returns il token di autenticazione dal localstorage.
    */
   getToken(): string {
     return localStorage.getItem("token");
   }
-  
+
   /**
-   * Logs out the user by removing the token from the local storage and reloading the page.
-   * 
-   * After logging out, the user will be redirected to the authentication page or any other desired page.
-   */
+   * Disconnette l'utente rimuovendo il token dal local storage e ricaricando la pagina.
+   *
+   * Dopo il logout, l'utente verrà reindirizzato alla pagina di autenticazione o a qualsiasi altra pagina desiderata.   */
   logout(): void {
     localStorage.removeItem("token");
     window.location.reload();
   }
-  
+
   /**
-   * Logs in the user with the provided username and password.
+   * Logga l'utente utilizzando le credenziali fornite.
    *
-   * @param username - The username of the user.
-   * @param password - The password of the user.
-   * @returns An Observable<boolean> representing the login result.
+   * @param username - L'username dell'utente.
+   * @param password - la password dell'utente.
+   * @returns Un Observable<boolean> che indica se il login è andato a buon fine.
    */
   login(username: string, password: string): Observable<boolean> {
     localStorage.setItem("token", "blablabla");
@@ -105,3 +104,4 @@ export class AuthService {
     return of(true);
   }
 }
+
