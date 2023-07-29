@@ -1,0 +1,10 @@
+<div class="mt-5 d-flex flex-wrap justify-content-center gap-2">
+  <app-lamp-button
+      [data]="lamp"
+      *ngFor="let lamp of lamps$ | async; trackBy: trackByLampId"
+  ></app-lamp-button>
+</div>
+
+
+<!-- (toggleLamp)="toggleLamp(lamp)"
+       -->
