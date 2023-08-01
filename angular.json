@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "http": {
+    "sweasabi-webapp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/http",
+            "outputPath": "dist/sweasabi-webapp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -47,7 +47,13 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,
@@ -67,10 +73,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "http:build:production"
+              "browserTarget": "sweasabi-webapp:build:production"
             },
             "development": {
-              "browserTarget": "http:build:development"
+              "browserTarget": "sweasabi-webapp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "http:build"
+            "browserTarget": "sweasabi-webapp:build"
           }
         },
         "test": {

@@ -6,22 +6,24 @@ import { Component, inject } from "@angular/core";
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 // Import per il Router
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { Area } from "../../model/AreaStatus";
 // Import per l'AppService
 import { AppService } from "../../services/app.service";
 
 /**
- * Componente per la Lampada.
- * Questo componente contiene un form per aggiungere una nuova lampada.
- * Interagisce con l'AppService per aggiungere nuove lampade e per navigare alla route principale in caso di aggiunta avvenuta con successo.
+ * Componente per le Aree.
+ * Questo componente contiene un form per aggiungere una nuova area.
+ * Interagisce con l'AppService per aggiungere nuove aree e tornare alla root route in caso di aggiunta riuscita.
  */
 @Component({
-  selector: "app-lamp",
-  templateUrl: "./lamp.component.html",
-  styleUrls: ["./lamp.component.css"],
+  selector: "app-area",
+  templateUrl: "./area.component.html",
+  styleUrls: ["./area.component.css"],
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
 })
-export class LampComponent {
+export class AreaComponent {
+
   activetedRoute = inject(ActivatedRoute)
   /**
    * Istanza di AppService.
@@ -31,13 +33,13 @@ export class LampComponent {
 
   /**
    * Istanza del Router.
-   * Viene utilizzata per navigare tra le route.
+   * Viene utilizzata per navigare tra le rotte.
    */
   router = inject(Router);
 
   /**
    * Istanza del FormBuilder.
-   * Viene utilizzata per creare un form reattivo per aggiungere nuove lampade.
+   * Viene utilizzata per creare un form reattivo per aggiungere nuove aree.
    */
   formBuilder = inject(FormBuilder);
 
@@ -46,7 +48,10 @@ export class LampComponent {
    * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
-    alias: this.formBuilder.control("", [Validators.required])
+    nome: [null, [Validators.required]],
+    lvlInf: [null, [Validators.required]],
+    lvlSup: [null, [Validators.required]],
+    automode: [false, [Validators.required]],
   });
 
   /**
@@ -56,12 +61,12 @@ export class LampComponent {
   error$ = this.appService.error$;
 
   /**
-   * Funzione per aggiungere una nuova lampada.
-   * Recupera il valore dell'alias dal form e chiama il metodo addLamp$ dell'AppService.
-   * In caso di aggiunta avvenuta con successo, viene navigato alla route principale.
+   * Funzione per aggiungere una nuova area.
+   * Recupera il valore dell'alias dal form e chiama il metodo addArea$ di AppService.
+   * In caso di aggiunta riuscita, naviga alla root route.
    */
-  addLamp() {
-    this.appService.addLamp$(this.formData.get("alias").value)
+  addArea() {
+    this.appService.addArea$(this.formData.getRawValue())
       .subscribe((completed) => {
         if (completed) {
           this.router.navigate(["../all"], { relativeTo: this.activetedRoute });

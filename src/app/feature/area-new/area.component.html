@@ -1,0 +1,53 @@
+<main class="container">
+  <form class="mt-5 mx-auto" [formGroup]="formData" (ngSubmit)="addArea ()" style="max-width: 350px">
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.nome.valid && formData.controls.nome.dirty" id="nome" placeholder="Alias" required formControlName="nome">
+        <label for="nome">Alias</label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.nome.valid && formData.controls.nome.dirty">
+        <ng-container *ngIf="formData.controls.nome.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="number" class="form-control" [class.is-invalid]="!formData.controls.lvlInf.valid && formData.controls.lvlInf.dirty" id="lvlInf" placeholder="lvlInf" required formControlName="lvlInf">
+        <label for="lvlInf">lvlInf</label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.lvlInf.valid && formData.controls.lvlInf.dirty">
+        <ng-container *ngIf="formData.controls.lvlInf.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="number" class="form-control" [class.is-invalid]="!formData.controls.lvlSup.valid && formData.controls.lvlSup.dirty" id="lvlSup" placeholder="lvlSup" required formControlName="lvlSup">
+        <label for="lvlSup">lvlSup</label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.lvlSup.valid && formData.controls.lvlSup.dirty">
+        <ng-container *ngIf="formData.controls.lvlSup.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="input-group has-validation " style="margin-bottom: 0.7em;">
+      <div class=" is-invalid form-check">
+        <input type="checkbox" class="form-check-input" id="automode" placeholder="automode" formControlName="automode">
+        <label for="automode" class="form-check-label">automode</label>
+      </div>
+    </div>
+
+    <!--  submit button -->
+    <div class="d-grid gap-2 mx-auto mt-3">
+      <button class="btn btn-primary" type="submit" [disabled]="!formData.valid">Conferma</button>
+    </div>
+  </form>
+</main>
+
+

@@ -19,9 +19,11 @@
  * @implements {OnInit}
  */
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, TrackByFunction } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { map, Subject, takeUntil } from "rxjs";
 
-import { SensorStatus } from "../../model";
+import { SensorStatus } from "src/app/model/SensorStatus";
 import { AppService } from "../../services/app.service";
 import { SensorButtonComponent } from "src/app/components/sensor-button/sensor-button.component";
 
@@ -33,7 +35,9 @@ import { SensorButtonComponent } from "src/app/components/sensor-button/sensor-b
   imports: [CommonModule, SensorButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SensorsListComponent implements OnInit {
+export class SensorsListComponent implements OnInit, OnDestroy {
+
+  #destroy = new Subject<void>();
 
   /**
    * Inizializza il componente e carica i dati dei sensori.
@@ -41,8 +45,19 @@ export class SensorsListComponent implements OnInit {
    * @memberof SensorsListComponent
    */
   ngOnInit() {
-    this.service.loadDataSensors();
+    const areaId = this.activetedRoute.snapshot.queryParamMap.get("areaId") != null ? Number(this.activetedRoute.snapshot.queryParamMap.get("areaId")) : undefined;
+
+    this.service.loadDataSensors(areaId);
+    this.activetedRoute.queryParamMap
+    .pipe(
+      map(queryParams => queryParams.get("areaId")),
+      takeUntil(this.#destroy)
+    ).subscribe(params => {
+      const _areaId = params != null ? Number(params) : undefined;
+      this.service.loadDataSensors(_areaId);
+    })
   }
+  activetedRoute = inject(ActivatedRoute);
 
   /**
    * Inietta l'`AppService` per comunicare con il backend e gestire i dati dei sensori.
@@ -76,13 +91,9 @@ export class SensorsListComponent implements OnInit {
    */
   trackBySensorId: TrackByFunction<SensorStatus> = (index: number, sensor: SensorStatus) => sensor.id;
 
-  /**
-   * Cambia lo stato di un sensore invocando il metodo `toggleSensor` dell'`AppService`.
-   *
-   * @param {SensorStatus} sensor L'oggetto del sensore da attivare/disattivare.
-   * @memberof SensorsListComponent
-   */
-  toggleSensor(sensor: SensorStatus) {
-    this.service.toggleSensor(sensor);
+  ngOnDestroy (): void {
+    this.#destroy.next();
+    this.#destroy.complete();
   }
+
 }

@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } f
 // Import per l'AreaButtonComponent
 import { AreaButtonComponent } from "../../components/area-button/area-button.component";
 // Import per il modello AreaStatus
-import { AreaStatus } from "../../model";
+import { AreaStatus } from "src/app/model/AreaStatus";
 // Import per l'AppService
 import { AppService } from "../../services/app.service";
 

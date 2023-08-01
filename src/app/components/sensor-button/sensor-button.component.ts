@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 // Import necessari da RxJS
 import { last } from "rxjs";
 // Import del modello SensorStatus
-import { SensorStatus } from "../../model";
+import { SensorStatus } from "src/app/model/SensorStatus";
 
 /**
  * Componente per il Pulsante del Sensore.

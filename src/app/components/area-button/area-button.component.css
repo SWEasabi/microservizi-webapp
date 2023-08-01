@@ -1,20 +1,4 @@
-button {
-    background-color: transparent;
-    border: none;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-}
 
-.button-header {
-    display: block;
-    border-bottom: 1px solid #e5e5e5;
-    text-align: left;
-}
-
-img {
-    width: 150px;
-    height: 150px;
-}
 
 .On {
     background: #ffebc6;

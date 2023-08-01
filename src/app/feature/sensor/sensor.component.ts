@@ -1,11 +1,11 @@
 // Modulo comune di Angular
 import { CommonModule } from "@angular/common";
 // Import necessari dal core di Angular
-import { Component, inject } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 // Import per i form controls
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 // Import per il Router
-import { Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 // Import per l'AppService
 import { AppService } from "../../services/app.service";
 
@@ -21,7 +21,13 @@ import { AppService } from "../../services/app.service";
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
 })
-export class SensorComponent {
+export class SensorComponent implements OnInit {
+  ngOnInit(): void {
+      if (!this.activetedRoute.snapshot.queryParamMap.get("areaId")) {
+          this.router.navigate(["/"]);
+      }
+  }
+  activetedRoute = inject(ActivatedRoute)
   /**
    * Istanza di AppService.
    * Viene utilizzata per interagire con il backend.
@@ -45,8 +51,9 @@ export class SensorComponent {
    * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
-    alias: this.formBuilder.control("", [Validators.required]),
-    geoPos: this.formBuilder.control("", [Validators.required]),
+    idarea: this.formBuilder.control(this.activetedRoute.snapshot.queryParamMap.get("areaId"), [Validators.required]),
+    latitudine: this.formBuilder.control("", [Validators.required]),
+    longitudine: this.formBuilder.control("", [Validators.required]),
     actionRange: this.formBuilder.control("", [Validators.required])
   });
 
@@ -58,18 +65,19 @@ export class SensorComponent {
 
   /**
    * Funzione per aggiungere un nuovo sensore.
-   * Recupera i valori di alias, geoPos e actionRange dal form e chiama il metodo addSensor$ dell'AppService.
+   * Recupera i valori di alias, latitudine e actionRange dal form e chiama il metodo addSensor$ dell'AppService.
    * In caso di aggiunta avvenuta con successo, naviga verso la route principale.
    */
   addSensor() {
-    const alias = this.formData.get("alias").value;
-    const geoPos = this.formData.get("geoPos").value;
-    const actionRange = this.formData.get("actionRange").value;
+    const idarea = Number(this.formData.get("idarea").value);
+    const latitudine = Number(this.formData.get("latitudine").value);
+    const longitudine = Number(this.formData.get("longitudine").value);
+    const raggio = Number(this.formData.get("actionRange").value);
 
-    this.appService.addSensor$(alias, geoPos, actionRange)
+    this.appService.addSensor$(idarea, latitudine, longitudine, raggio)
       .subscribe((completed) => {
         if (completed) {
-          this.router.navigate(["/"]);
+          this.router.navigate(["../all"], { relativeTo: this.activetedRoute });
         }
       });
   }

@@ -1,14 +1,16 @@
 {
-    "/lamps": {
-        "target": "http://localhost:3000",
-        "secure": false
+  "/registry": {
+    "target": "http://localhost:8081/",
+    "pathRewrite": {
+      "^/registry": ""
     },
-    "/sensors": {
-        "target": "http://localhost:3000",
-        "secure": false
-    },
-    "/areas": {
-        "target": "http://localhost:3000",
-        "secure": false
+    "secure": false
+  },
+  "/auth": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "pathRewrite": {
+      "^/auth": ""
     }
+  }
 }

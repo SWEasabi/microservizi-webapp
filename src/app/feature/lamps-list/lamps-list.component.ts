@@ -1,11 +1,13 @@
 // Modulo comune di Angular
 import { CommonModule } from "@angular/common";
 // Import necessari dal core di Angular
-import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, TrackByFunction } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { map, Subject, takeUntil } from "rxjs";
 // Import per il componente LampButtonComponent
 import { LampButtonComponent } from "../../components/lamp-button/lamp-button.component";
 // Import per il modello LampStatus
-import { LampStatus } from "../../model";
+import { LampStatus } from "src/app/model/LampStatus";
 // Import per l'AppService
 import { AppService } from "../../services/app.service";
 
@@ -23,13 +25,26 @@ import { AppService } from "../../services/app.service";
   styleUrls: ["./lamps-list.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LampsListComponent implements OnInit {
+export class LampsListComponent implements OnInit, OnDestroy {
   /**
    * Implementazione del hook del ciclo di vita OnInit.
    * Qui viene chiamato il metodo loadData del servizio.
    */
+  activetedRoute = inject(ActivatedRoute)
+  #destroy = new Subject<void>();
+
   ngOnInit() {
-    this.service.loadData();
+    const areaId = this.activetedRoute.snapshot.queryParamMap.get("areaId") != null ? Number(this.activetedRoute.snapshot.queryParamMap.get("areaId")) : undefined;
+    this.service.loadLampsData(areaId);
+
+    this.activetedRoute.queryParamMap
+    .pipe(
+      map(queryParams => queryParams.get("areaId")),
+      takeUntil(this.#destroy)
+    ).subscribe(params => {
+      const _areaId = params != null ? Number(params) : undefined;
+      this.service.loadLampsData(_areaId);
+    })
   }
 
   /**
@@ -60,8 +75,14 @@ export class LampsListComponent implements OnInit {
    * Metodo per cambiare lo stato di una lampada.
    * Questo metodo utilizza l'AppService per cambiare lo stato della lampada.
    * @param lamp - L'istanza di LampStatus da cambiare
-   */
+
   toggleLamp(lamp: LampStatus) {
     this.service.toggleLamp(lamp);
   }
+  */
+  ngOnDestroy (): void {
+    this.#destroy.next();
+    this.#destroy.complete();
+  }
+
 }

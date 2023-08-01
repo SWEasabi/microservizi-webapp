@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 // Importa last da RxJS
 import { last } from "rxjs";
 // Importa da modello LampStatus
-import { LampStatus } from "../../model";
+import { LampStatus } from "src/app/model/LampStatus";
 
 /**
  * Componente per Lamp Button.
