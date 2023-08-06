@@ -9,7 +9,7 @@ import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, delay, map, Observable, of, switchMap, tap } from "rxjs";
 import { LampStatus } from "../model/LampStatus";
 import { SensorStatus } from "../model/SensorStatus";
-import { Area, AreaStatus } from "../model/AreaStatus";
+import { AreaStatus } from "../model/AreaStatus";
 import { ApiService } from "./api.service";
 
 /**
@@ -98,13 +98,13 @@ export class AppService {
  * Aggiorna lo stato con i nuovi dati, gestisce eventuali errori,
  * e interrompe l'animazione di caricamento una volta completato.
  */
-public loadLampsData (areaId: number) {
+public loadData() {
   // Avvia l'animazione di caricamento.
   this.startLoading();
 
   // Chiama il metodo getAllLamps$() del servizio api per ottenere i dati delle lampade.
   // Questo metodo restituisce un Observable che emette i dati delle lampade.
-  (areaId ? this.api.getAllLampsByAreaId$(areaId) : this.api.getAllLamps$()).subscribe({
+  this.api.getAllLamps$().subscribe({
     // Callback "next": Eseguita quando nuovi dati (lampade) sono emessi dall'Observable.
     next: (lamps) => {
       // Aggiorna lo stato dell'applicazione con i nuovi dati utilizzando this.$store.next(...).
@@ -140,9 +140,10 @@ public loadLampsData (areaId: number) {
      * Aggiorna lo stato con i nuovi dati, gestisce eventuali errori,
      * e interrompe l'animazione di caricamento una volta completato.
      */
-  public loadDataSensors(areaId?: number) {
+  public loadDataSensors() {
     this.startLoading();
-    (areaId ? this.api.getAllSensorsByAreaId$(areaId) : this.api.getAllSensors$()).subscribe({
+    this.api.getAllSensors$()
+      .subscribe({
         next: (sensors) => {
           this.$store.next({
             ...this.$store.value,
@@ -257,14 +258,14 @@ private startLoading() {
   * @param alias L'alias della nuova lampada.
   * @returns Un osservabile che emette un valore booleano che indica se l'aggiunta della lampada è stata eseguita con successo.
   */
-  public addLamp$(alias: string): Observable<boolean> {
+  public addLamp$(alias: number, latitudine: number, longitudine: number, tipo : string, wattaggio: number): Observable<boolean> {
     return of(true)
       .pipe(
         tap(() => this.startLoading()),
-        switchMap(() => this.api.addLamp$(alias)),
+        switchMap(() => this.api.addLamp$(alias, latitudine, longitudine, tipo, wattaggio)),
         map(() => true),
         catchError(() => of(false)),
-        tap(() => this.loadLampsData (null))
+        tap(() => this.loadData())
       );
   }
   /**
@@ -284,7 +285,7 @@ private startLoading() {
         switchMap(() => this.api.addSensor$(alias, latitudine, longitudine, raggio)),
         map(() => true),
         catchError(() => of(false)),
-        tap(() => this.loadLampsData (null))
+        tap(() => this.loadData())
       );
   }
   /**
@@ -294,16 +295,29 @@ private startLoading() {
  * @param alias L'alias della nuova area.
  * @returns Un osservabile che emette un valore booleano che indica se l'aggiunta dell'area è stata eseguita con successo.
  */
-  public addArea$(area: Area): Observable<boolean> {
+  public addArea$(alias: string): Observable<boolean> {
     return of(true)
       .pipe(
         tap(() => {
           this.startLoading()
         }),
-        switchMap(() => this.api.addArea$(area)),
+        switchMap(() => this.api.addArea$(alias)),
         map(() => true),
         catchError(() => of(false)),
         tap(() => this.loadDataAreas())
+      );
+  }
+
+  public setLuminosita$(idarea: number, value: number): Observable<boolean> {
+    return of(true)
+      .pipe(
+        tap(() => {
+          this.startLoading()
+        }),
+        switchMap(() => this.api.setLuminosita(idarea,value)),
+        map(() => true),
+        catchError(() => of(false)),
+        tap(() => this.loadData())
       );
   }
 

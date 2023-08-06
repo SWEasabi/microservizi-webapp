@@ -1,16 +1,14 @@
 {
-  "/registry": {
-    "target": "http://localhost:8081/",
-    "pathRewrite": {
-      "^/registry": ""
+    "/lamps": {
+        "target": "http://localhost:8081/",
+        "secure": false
     },
-    "secure": false
-  },
-  "/auth": {
-    "target": "http://localhost:8080",
-    "secure": false,
-    "pathRewrite": {
-      "^/auth": ""
+    "/sensors": {
+        "target": "http://localhost:8081/",
+        "secure": false
+    },
+    "/areas": {
+        "target": "http://localhost:8081/",
+        "secure": false
     }
-  }
 }

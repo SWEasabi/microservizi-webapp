@@ -5,8 +5,7 @@ import { Component, inject } from "@angular/core";
 // Import per i controlli del form
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 // Import per il Router
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { Area } from "../../model/AreaStatus";
+import { Router, RouterModule } from "@angular/router";
 // Import per l'AppService
 import { AppService } from "../../services/app.service";
 
@@ -23,8 +22,6 @@ import { AppService } from "../../services/app.service";
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
 })
 export class AreaComponent {
-
-  activetedRoute = inject(ActivatedRoute)
   /**
    * Istanza di AppService.
    * Viene utilizzata per interagire con il backend.
@@ -48,10 +45,7 @@ export class AreaComponent {
    * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
-    nome: [null, [Validators.required]],
-    lvlInf: [null, [Validators.required]],
-    lvlSup: [null, [Validators.required]],
-    automode: [false, [Validators.required]],
+    alias: this.formBuilder.control("", [Validators.required])
   });
 
   /**
@@ -66,10 +60,14 @@ export class AreaComponent {
    * In caso di aggiunta riuscita, naviga alla root route.
    */
   addArea() {
-    this.appService.addArea$(this.formData.getRawValue())
+    const alias = this.formData.get("alias").value;
+
+    console.log(alias);
+
+    this.appService.addArea$(alias)
       .subscribe((completed) => {
         if (completed) {
-          this.router.navigate(["../all"], { relativeTo: this.activetedRoute });
+          this.router.navigate(["/"]);
         }
       });
   }

@@ -1,12 +1,48 @@
 <main class="container">
   <form class="mt-5 mx-auto" [formGroup]="formData" (ngSubmit)="addLamp ()" style="max-width: 350px">
-    <div class="input-group has-validation mx-auto">
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
       <div class="form-floating is-invalid">
-        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.alias.valid && formData.controls.alias.dirty" id="floatingInputGroup2" placeholder="Alias" required formControlName="alias">
-        <label for="floatingInputGroup2">Alias</label>
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.idarea.valid && formData.controls.idarea.dirty" id="floatingInputGroup2" placeholder="idarea" required formControlName="idarea">
+        <label for="floatingInputGroup2">IdArea</label>
       </div>
-      <div class="invalid-feedback" *ngIf="!formData.controls.alias.valid && formData.controls.alias.dirty">
-        <ng-container *ngIf="formData.controls.alias.errors?.['required']">
+      <div class="invalid-feedback" *ngIf="!formData.controls.idarea.valid && formData.controls.idarea.dirty">
+        <ng-container *ngIf="formData.controls.idarea.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.latitudine.valid && formData.controls.latitudine.dirty" id="floatingInputGroup2" placeholder="latitudine" required formControlName="latitudine">
+        <label for="floatingInputGroup2">Latitudine lampione
+        </label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.latitudine.valid && formData.controls.latitudine.dirty">
+        <ng-container *ngIf="formData.controls.latitudine.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.longitudine.valid && formData.controls.longitudine.dirty" id="floatingInputGroup2" placeholder="longitudine" required formControlName="longitudine">
+        <label for="floatingInputGroup2">Longitudine lampione
+        </label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.latitudine.valid && formData.controls.latitudine.dirty">
+        <ng-container *ngIf="formData.controls.latitudine.errors?.['required']">
+          Il campo è obbligatorio
+        </ng-container>
+      </div>
+    </div>
+    <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+      <div class="form-floating is-invalid">
+        <input type="text" class="form-control" [class.is-invalid]="!formData.controls.wattaggio.valid && formData.controls.wattaggio.dirty" id="floatingInputGroup2" placeholder="wattaggio" required formControlName="wattaggio">
+        <label for="floatingInputGroup2">Wattaggio lampione
+        </label>
+      </div>
+      <div class="invalid-feedback" *ngIf="!formData.controls.wattaggio.valid && formData.controls.wattaggio.dirty">
+        <ng-container *ngIf="formData.controls.wattaggio.errors?.['required']">
           Il campo è obbligatorio
         </ng-container>
       </div>

@@ -1,13 +1,11 @@
 // Integraizione di CommonModule
-import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { CommonModule } from "@angular/common";
 // Import necessary da Angular core
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
-import { RouterLink } from "@angular/router";
 // Import da RxJS
 import { last } from "rxjs";
 // Import da modello AreaStatus
 import { AreaStatus } from "src/app/model/AreaStatus";
-import { SensorsListComponent } from "../../feature/sensors-list/sensors-list.component";
 
 /**
  * Componente presentazionale che riceve dati come Input ed emette eventi come Output.
@@ -19,7 +17,7 @@ import { SensorsListComponent } from "../../feature/sensors-list/sensors-list.co
   templateUrl: "./area-button.component.html",
   styleUrls: ["./area-button.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink, SensorsListComponent, NgOptimizedImage],
+  imports: [CommonModule],
   standalone: true
 })
 

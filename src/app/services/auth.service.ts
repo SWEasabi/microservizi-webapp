@@ -28,11 +28,8 @@
  *   // Gestisce il risultato del login
  * });
  */
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable, of, tap } from "rxjs";
-import { PATHS } from "../app.constant";
-import { LoginResult, LogoutResult } from "../model/AuthModel";
+import { Observable, of } from "rxjs";
 
 /**
  * @class AuthService
@@ -45,15 +42,17 @@ import { LoginResult, LogoutResult } from "../model/AuthModel";
  *
  * la classe `AuthService` può essere iniettata in un componente o in un servizio.
  */
-@Injectable ({
+@Injectable({
   providedIn: "root"
 })
 export class AuthService {
 
-  private auth: LoginResult = null;
+  private loggedIn = false;
 
-  constructor (private http: HttpClient) {
-    this.loadAuthFromLocalStorage ();
+  constructor() {
+    if (this.isAuthenticated()) {
+      this.loggedIn = true;
+    }
   }
 
   /**
@@ -61,8 +60,17 @@ export class AuthService {
    *
    * @returns Un valore booleano che indica se l'utente è loggato.
    */
-  isLoggedIn (): boolean {
-    return this.auth?.access?.length > 0;
+  isLoggedIn(): boolean {
+    return this.loggedIn;
+  }
+
+  /**
+   * Controlla se l'utente è autenticato.
+   *
+   * @returns un valore booleano che indica se l'utente è autenticato.
+   */
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem("token");
   }
 
   /**
@@ -70,24 +78,17 @@ export class AuthService {
    *
    * @returns il token di autenticazione dal localstorage.
    */
-  getToken (): string {
-    return this.auth.access;
+  getToken(): string {
+    return localStorage.getItem("token");
   }
 
   /**
    * Disconnette l'utente rimuovendo il token dal local storage e ricaricando la pagina.
    *
    * Dopo il logout, l'utente verrà reindirizzato alla pagina di autenticazione o a qualsiasi altra pagina desiderata.   */
-  logout (): void {
-    if (this.isLoggedIn ()) {
-      this.http.post<LogoutResult> (PATHS.LOGOUT_PATH, this.auth).subscribe((result) => {
-        if (result.status) {
-          window.location.reload ();
-        }
-      });
-    }
-    this.auth = null;
-    localStorage.removeItem ("auth");
+  logout(): void {
+    localStorage.removeItem("token");
+    window.location.reload();
   }
 
   /**
@@ -97,30 +98,10 @@ export class AuthService {
    * @param password - la password dell'utente.
    * @returns Un Observable<boolean> che indica se il login è andato a buon fine.
    */
-  login (username: string, password: string): Observable<boolean> {
-    return this.http.post<LoginResult> (PATHS.LOGIN_PATH, { username, password })
-    .pipe (
-      tap ((result) => {
-        if (result.access?.length > 0) {
-          this.auth = result;
-          localStorage.setItem ("auth", JSON.stringify(result));
-        } else {
-          this.auth = null;
-        }
-      }),
-      map ((result) => result.access?.length > 0)
-    );
-  }
-  private loadAuthFromLocalStorage () {
-    const auth = localStorage.getItem ("auth");
-    if (auth) {
-      try {
-        this.auth = JSON.parse (auth);
-      } catch (e) {
-        this.auth = null;
-        localStorage.removeItem ("auth");
-      }
-    }
+  login(username: string, password: string): Observable<boolean> {
+    localStorage.setItem("token", "blablabla");
+    this.loggedIn = true;
+    return of(true);
   }
 }
 

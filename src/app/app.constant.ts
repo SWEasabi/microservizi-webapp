@@ -1,7 +1,7 @@
 export const PATHS = {
-    LOGIN_PATH : "/auth/login",
-    LOGOUT_PATH : "/auth/logout",
-    LAMP_PATH : "/registry/lamp",
-    SENSOR_PATH : "/registry/sensor",
-    AREA_PATH : "/registry/area"
+    BASE_PATH : "http://localhost:8081",
+    LOGIN_PATH : "/login",
+    LAMP_PATH : "/lamp",
+    SENSOR_PATH : "/sensor",
+    AREA_PATH : "/area"
 }

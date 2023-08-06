@@ -3,19 +3,30 @@
     class="d-flex flex-column p-3 align-items-stretch"
     (click)="toggleLamp.next ()">
   <span class="button-header mb-3 pb-1">
-    ID: {{ data.id }} <br>
-    V: {{ data.voltaggio }}
+    Id : {{ data.id }} <br> Wattaggio: {{data.wattaggio}} <br> Luminosita:{{data.luminosita}}
   </span>
-  <div>Tipo: {{ data.misuratore.tipo }} </div>
-  <div>ID area: {{ data.misuratore.idarea }} </div>
-  <div>Longitudine: {{ data.misuratore.longitudine }} </div>
-  <div>Latitudine: {{ data.misuratore.latitudine }} </div>
-  <!-- <ng-container *ngIf="data">
-    <ng-container [ngSwitch]="data.status">
-      <img *ngSwitchCase="'On'" src="../../assets/images/lamp2.png" alt="Lamp On">
-      <img *ngSwitchCase="'Off'" src="../../assets/images/lamp.png" alt="Lamp Off">
-      <img *ngSwitchDefault src="../../assets/images/loading.png" alt="Lamp Off">
+  <ng-container *ngIf="data">
+    <ng-container [ngSwitch]="data.luminosita">
     </ng-container>
-    <h2>{{data.status}}</h2>
-  </ng-container> -->
+    <main class="container">
+      <form class="mt-5 mx-auto" [formGroup]="formData" (ngSubmit)="submitBrightness()" style="max-width: 350px">
+        <div class="input-group has-validation mx-auto" style="margin-bottom: 0.7em;">
+          <div class="form-floating is-invalid">
+            <input type="text" class="form-control" [class.is-invalid]="!formData.controls.luminosita.valid && formData.controls.luminosita.dirty" id="floatingInputGroup2" placeholder="luminosita" required formControlName="luminosita">
+            <label for="floatingInputGroup2">Luminosità:</label>
+          </div>
+          <div class="invalid-feedback" *ngIf="!formData.controls.luminosita.valid && formData.controls.luminosita.dirty">
+            <ng-container *ngIf="formData.controls.luminosita.errors?.['required']">
+              Il campo è obbligatorio
+            </ng-container>
+          </div>
+        </div>
+        <!--  submit button -->
+        <div class="d-grid gap-2 mx-auto mt-3">
+          <button class="btn btn-primary" type="submit" [disabled]="!formData.valid">Conferma</button>
+        </div>
+      </form>
+    </main>
+    
+  </ng-container>
 </button>

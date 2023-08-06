@@ -1,11 +1,3 @@
-export interface Misuratore {
-    id: number;
-    idarea: number;
-    tipo: string;
-    latitudine: number;
-    longitudine: number;
-}
-
 /**
  * Rappresenta lo stato di una lampada.
  * Il campo `status` può essere 'On' (acceso) o 'Off' (spento).
@@ -17,12 +9,27 @@ export interface LampStatus {
     /**
      * L'identificatore univoco della lampada.
      */
-    id: number;
+    id: string;
+    /**
+     * L'identificatore univoco dell'area di appartenenza del lampione.
+     */
+    idarea: string;
+    /**
+     * (Opzionale) Indica se il cambio di stato della lampada è in corso o meno.
+     */
+    pending?: boolean;
+    /**
+     * La latitudine del lampione.
+     */
+    latitudine: number;
+    /**
+     * La longitudine del lampione.
+     */
+    longitudine: number;
     /**
      * Il voltaggio della lampada.
      */
-    voltaggio: number;
+    wattaggio: number;
 
-    misuratore: Misuratore;
-    pending?: boolean;
+    luminosita: number;
 }

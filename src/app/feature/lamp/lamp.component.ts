@@ -5,7 +5,7 @@ import { Component, inject } from "@angular/core";
 // Import per i controlli del form
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 // Import per il Router
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 // Import per l'AppService
 import { AppService } from "../../services/app.service";
 
@@ -22,7 +22,6 @@ import { AppService } from "../../services/app.service";
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
 })
 export class LampComponent {
-  activetedRoute = inject(ActivatedRoute)
   /**
    * Istanza di AppService.
    * Viene utilizzata per interagire con il backend.
@@ -30,23 +29,26 @@ export class LampComponent {
   appService = inject(AppService);
 
   /**
-   * Istanza del Router.
+   * Istanza di Router.
    * Viene utilizzata per navigare tra le route.
    */
   router = inject(Router);
 
   /**
-   * Istanza del FormBuilder.
-   * Viene utilizzata per creare un form reattivo per aggiungere nuove lampade.
+   * Istanza di FormBuilder.
+   * Viene utilizzata per creare un form reattivo per l'aggiunta di nuovi sensori.
    */
   formBuilder = inject(FormBuilder);
 
   /**
-   * Istanza del FormGroup.
+   * Istanza di FormGroup.
    * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
-    alias: this.formBuilder.control("", [Validators.required])
+    idarea: this.formBuilder.control("", [Validators.required]),
+    latitudine: this.formBuilder.control("", [Validators.required]),
+    longitudine: this.formBuilder.control("", [Validators.required]),
+    wattaggio: this.formBuilder.control("", [Validators.required])
   });
 
   /**
@@ -56,15 +58,20 @@ export class LampComponent {
   error$ = this.appService.error$;
 
   /**
-   * Funzione per aggiungere una nuova lampada.
-   * Recupera il valore dell'alias dal form e chiama il metodo addLamp$ dell'AppService.
-   * In caso di aggiunta avvenuta con successo, viene navigato alla route principale.
+   * Funzione per aggiungere un nuovo sensore.
+   * Recupera i valori di alias, latitudine e actionRange dal form e chiama il metodo addSensor$ dell'AppService.
+   * In caso di aggiunta avvenuta con successo, naviga verso la route principale.
    */
   addLamp() {
-    this.appService.addLamp$(this.formData.get("alias").value)
+    const idarea = Number(this.formData.get("idarea").value);
+    const latitudine = Number(this.formData.get("latitudine").value);
+    const longitudine = Number(this.formData.get("longitudine").value);
+    const wattaggio = Number(this.formData.get("wattaggio").value);
+    var tipo : string = "lampione";
+    this.appService.addLamp$(idarea, latitudine, longitudine, tipo, wattaggio)
       .subscribe((completed) => {
         if (completed) {
-          this.router.navigate(["../all"], { relativeTo: this.activetedRoute });
+          this.router.navigate(["/"]);
         }
       });
   }

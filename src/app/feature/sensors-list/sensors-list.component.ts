@@ -19,9 +19,7 @@
  * @implements {OnInit}
  */
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, TrackByFunction } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { map, Subject, takeUntil } from "rxjs";
+import { ChangeDetectionStrategy, Component, inject, OnInit, TrackByFunction } from "@angular/core";
 
 import { SensorStatus } from "src/app/model/SensorStatus";
 import { AppService } from "../../services/app.service";
@@ -35,9 +33,7 @@ import { SensorButtonComponent } from "src/app/components/sensor-button/sensor-b
   imports: [CommonModule, SensorButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SensorsListComponent implements OnInit, OnDestroy {
-
-  #destroy = new Subject<void>();
+export class SensorsListComponent implements OnInit {
 
   /**
    * Inizializza il componente e carica i dati dei sensori.
@@ -45,19 +41,8 @@ export class SensorsListComponent implements OnInit, OnDestroy {
    * @memberof SensorsListComponent
    */
   ngOnInit() {
-    const areaId = this.activetedRoute.snapshot.queryParamMap.get("areaId") != null ? Number(this.activetedRoute.snapshot.queryParamMap.get("areaId")) : undefined;
-
-    this.service.loadDataSensors(areaId);
-    this.activetedRoute.queryParamMap
-    .pipe(
-      map(queryParams => queryParams.get("areaId")),
-      takeUntil(this.#destroy)
-    ).subscribe(params => {
-      const _areaId = params != null ? Number(params) : undefined;
-      this.service.loadDataSensors(_areaId);
-    })
+    this.service.loadDataSensors();
   }
-  activetedRoute = inject(ActivatedRoute);
 
   /**
    * Inietta l'`AppService` per comunicare con il backend e gestire i dati dei sensori.
@@ -91,9 +76,6 @@ export class SensorsListComponent implements OnInit, OnDestroy {
    */
   trackBySensorId: TrackByFunction<SensorStatus> = (index: number, sensor: SensorStatus) => sensor.id;
 
-  ngOnDestroy (): void {
-    this.#destroy.next();
-    this.#destroy.complete();
-  }
+
 
 }

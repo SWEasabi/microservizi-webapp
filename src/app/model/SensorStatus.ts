@@ -23,7 +23,7 @@ export interface SensorStatus {
     idarea: string;
     /**
      * Alias del sensore.
-
+  
     alias: string;*/
     /**
      * (Opzionale) Indica se il cambio di stato del sensore è in corso o meno.
@@ -41,5 +41,5 @@ export interface SensorStatus {
      * Il raggio entro cui il sensore opera.
      */
     raggio: number;
-
+  
   }

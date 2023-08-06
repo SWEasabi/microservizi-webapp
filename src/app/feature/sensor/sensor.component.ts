@@ -1,11 +1,11 @@
 // Modulo comune di Angular
 import { CommonModule } from "@angular/common";
 // Import necessari dal core di Angular
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject } from "@angular/core";
 // Import per i form controls
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 // Import per il Router
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 // Import per l'AppService
 import { AppService } from "../../services/app.service";
 
@@ -21,13 +21,7 @@ import { AppService } from "../../services/app.service";
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
 })
-export class SensorComponent implements OnInit {
-  ngOnInit(): void {
-      if (!this.activetedRoute.snapshot.queryParamMap.get("areaId")) {
-          this.router.navigate(["/"]);
-      }
-  }
-  activetedRoute = inject(ActivatedRoute)
+export class SensorComponent {
   /**
    * Istanza di AppService.
    * Viene utilizzata per interagire con il backend.
@@ -51,7 +45,7 @@ export class SensorComponent implements OnInit {
    * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
-    idarea: this.formBuilder.control(this.activetedRoute.snapshot.queryParamMap.get("areaId"), [Validators.required]),
+    idarea: this.formBuilder.control("", [Validators.required]),
     latitudine: this.formBuilder.control("", [Validators.required]),
     longitudine: this.formBuilder.control("", [Validators.required]),
     actionRange: this.formBuilder.control("", [Validators.required])
@@ -77,7 +71,7 @@ export class SensorComponent implements OnInit {
     this.appService.addSensor$(idarea, latitudine, longitudine, raggio)
       .subscribe((completed) => {
         if (completed) {
-          this.router.navigate(["../all"], { relativeTo: this.activetedRoute });
+          this.router.navigate(["/"]);
         }
       });
   }

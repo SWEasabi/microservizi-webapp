@@ -1,11 +1,14 @@
 // Importando componenti necessari da Angular common
 import { CommonModule } from "@angular/common";
 // Import necessary da Angular core
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from "@angular/core";
 // Importa last da RxJS
 import { last } from "rxjs";
 // Importa da modello LampStatus
 import { LampStatus } from "src/app/model/LampStatus";
+import { AppService } from "../../services/app.service";
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+
 
 /**
  * Componente per Lamp Button.
@@ -18,7 +21,7 @@ import { LampStatus } from "src/app/model/LampStatus";
   templateUrl: "./lamp-button.component.html",
   styleUrls: ["./lamp-button.component.css"],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   standalone: true
 })
 
@@ -29,11 +32,30 @@ export class LampButtonComponent {
    */
   @Input () data: LampStatus;
 
+  formBuilder = inject(FormBuilder);
+
+  appService = inject(AppService);
+
+  formData = this.formBuilder.group({
+    luminosita: this.formBuilder.control("", [Validators.required])
+  });
+
+  error$ = this.appService.error$;
+
   /**
    * Output EventEmitter da emettere quando lo stato della lampada viene attivata.
    * Emette un evento ogni volta che un utente interagisce con la lampada.
    */
   @Output () toggleLamp = new EventEmitter<void> ();
+
+  submitBrightness(){
+    const luminosita = Number(this.formData.get("luminosita").value);
+    this.appService.setLuminosita$(Number(this.data.id), luminosita)
+      .subscribe((completed) => {
+        if (completed) {
+        }
+      });
+  }
 
   /**
    * Un operatore RxJS che emette solo l'ultimo valore (completo) di una sequenza osservabile.

@@ -2,7 +2,7 @@ import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LampStatus } from '../model/LampStatus';
 import { SensorStatus } from '../model/SensorStatus';
-import { Area, AreaStatus } from "../model/AreaStatus";
+import { AreaStatus } from '../model/AreaStatus';
 import { PATHS } from '../app.constant';
 
 /**
@@ -23,11 +23,7 @@ export class ApiService {
    * @returns Un osservabile di tipo LampStatus[] che rappresenta l'elenco delle lampade.
    */
   getAllLamps$() {
-    return this.http.get<LampStatus[]>(PATHS.LAMP_PATH + "/allLamps");
-  }
-
-  getAllLampsByAreaId$(areaId: number) {
-    return this.http.get<LampStatus[]>(PATHS.LAMP_PATH + "/LampsInArea/" + areaId);
+    return this.http.get<LampStatus[]>(PATHS.BASE_PATH + PATHS.LAMP_PATH + "/allLamps");
   }
 
   /**
@@ -35,11 +31,7 @@ export class ApiService {
    * @returns Un osservabile di tipo SensorStatus[] che rappresenta l'elenco dei sensori.
    */
   getAllSensors$() {
-    return this.http.get<SensorStatus[]>(PATHS.SENSOR_PATH + `/allSensors`);
-  }
-
-  getAllSensorsByAreaId$(areaId: number) {
-    return this.http.get<SensorStatus[]>(PATHS.SENSOR_PATH + "/sensorsInArea/" + areaId);
+    return this.http.get<SensorStatus[]>(PATHS.BASE_PATH + PATHS.SENSOR_PATH + `/allSensors`);
   }
 
   /**
@@ -47,7 +39,7 @@ export class ApiService {
    * @returns Un osservabile di tipo AreaStatus[] che rappresenta l'elenco delle aree.
    */
   getAllAreas$() {
-    return this.http.get<AreaStatus[]>(PATHS.AREA_PATH + `/allAreas`);
+    return this.http.get<AreaStatus[]>(PATHS.BASE_PATH + PATHS.AREA_PATH + `/allAreas`);
   }
 
   /**
@@ -65,8 +57,8 @@ export class ApiService {
    * @param alias L'alias della nuova lampada.
    * @returns Un osservabile di tipo LampStatus che rappresenta la lampada appena aggiunta.
    */
-  addLamp$(alias: string) {
-    return this.http.post<LampStatus>('/lamps', { alias });
+  addLamp$(idarea: number, latitudine: number, longitudine: number, tipo : string, wattaggio: number) {
+    return this.http.put<LampStatus>(PATHS.BASE_PATH + PATHS.LAMP_PATH + "/insert", { idarea, latitudine, longitudine, tipo, wattaggio });
   }
 
   /**
@@ -77,7 +69,7 @@ export class ApiService {
    * @returns Un osservabile di tipo SensorStatus che rappresenta il sensore appena aggiunto.
    */
   addSensor$(idarea: number, latitudine: number, longitudine: number, raggio: number) {
-    return this.http.put<SensorStatus>(PATHS.SENSOR_PATH + "/insert", { idarea, latitudine, longitudine, raggio });
+    return this.http.put<SensorStatus>(PATHS.BASE_PATH + PATHS.SENSOR_PATH + "/insert", { idarea, latitudine, longitudine, raggio });
   }
 
   /**
@@ -85,7 +77,11 @@ export class ApiService {
    * @param alias L'alias della nuova area.
    * @returns Un osservabile di tipo AreaStatus che rappresenta l'area appena aggiunta.
    */
-  addArea$(area: Area) {
-    return this.http.put<AreaStatus>(PATHS.AREA_PATH +'/save', area);
+  addArea$(alias: string) {
+    return this.http.post<AreaStatus>('/areas', { alias });
+  }
+
+  setLuminosita(idlamp: number, value: number) {
+    return this.http.post<boolean>('http://localhost:8083/setIlluminazione/' + idlamp + '/' + value, {});
   }
 }

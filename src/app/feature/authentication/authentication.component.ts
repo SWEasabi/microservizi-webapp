@@ -14,7 +14,7 @@ import { AuthService } from "../../services/auth.service";
 /**
  * Componente per l'Autenticazione.
  * Questo componente fornisce un form di login.
- * Interagisce con l'AuthService per autenticare un utente e navigare nell'area-new privata in caso di login avvenuto con successo.
+ * Interagisce con l'AuthService per autenticare un utente e navigare nell'area privata in caso di login avvenuto con successo.
  */
 @Component({
   selector: "app-authentication",
@@ -48,8 +48,8 @@ export class AuthenticationComponent implements OnInit {
    * Viene utilizzata per creare e gestire i controlli del form.
    */
   formData = this.formBuilder.group({
-    username: this.formBuilder.control("Admin", [Validators.required]),
-    password: this.formBuilder.control("5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", [Validators.required])
+    username: this.formBuilder.control("", [Validators.required]),
+    password: this.formBuilder.control("", [Validators.required])
   });
 
   /**
@@ -63,13 +63,13 @@ export class AuthenticationComponent implements OnInit {
    * Rimuove il token dal local storage ogni volta che questo componente viene inizializzato.
    */
   ngOnInit() {
-    this.authService.logout();
+    localStorage.removeItem("token");
   }
 
   /**
    * Funzione per effettuare il login di un utente.
    * Recupera i dati dal form e chiama il metodo login dell'AuthService.
-   * In caso di login avvenuto con successo, viene navigato nell'area-new privata.
+   * In caso di login avvenuto con successo, viene navigato nell'area privata.
    * Se il login fallisce, viene impostato il messaggio di errore.
    */
   login() {
@@ -77,7 +77,7 @@ export class AuthenticationComponent implements OnInit {
     this.authService.login(credentials.username, credentials.password)
       .subscribe((logged) => {
         if (logged) {
-          this.router.navigate(["/private-area-new"]);
+          this.router.navigate(["/private-area"]);
         } else {
           this.errorMessage = "Credenziali non valide";
         }
